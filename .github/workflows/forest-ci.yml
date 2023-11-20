@@ -46,7 +46,7 @@ jobs:
         shell: bash
 
       - name: Run build with Gradle wrapper
-        run: ./gradlew clean build ./ -i
+        run: ./gradlew clean build -i
 
       - name: Forest Server CI Discord Notification
         uses: sarisia/actions-status-discord@v1
