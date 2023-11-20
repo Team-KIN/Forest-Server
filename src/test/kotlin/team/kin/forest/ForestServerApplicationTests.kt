@@ -1,13 +1,3 @@
 package team.kin.forest
 
-import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
-
-@SpringBootTest
-class ForestServerApplicationTests {
-
-    @Test
-    fun contextLoads() {
-    }
-
-}
+class ForestServerApplicationTests
