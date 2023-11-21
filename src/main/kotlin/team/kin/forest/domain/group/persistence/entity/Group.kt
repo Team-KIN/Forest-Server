@@ -1,6 +1,7 @@
 package team.kin.forest.domain.group.persistence.entity
 
 import team.kin.forest.domain.group.persistence.enums.GroupScope
+import team.kin.forest.domain.user.persistence.entity.User
 import team.kin.forest.global.entity.BaseUUIDEntity
 import java.util.UUID
 import javax.persistence.*
@@ -27,5 +28,5 @@ class Group (
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "manager_id", columnDefinition = "BINARY(16)", nullable = false)
-    var manager: Manager
+    var manager: User
 ) : BaseUUIDEntity(id)
