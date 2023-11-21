@@ -14,7 +14,7 @@ class PrivateTodo (
     @Column(columnDefinition = "VARCHAR(100)", nullable = false)
     var content: String,
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(5)", nullable = false)
     var todoStatus: TodoStatus,
 
