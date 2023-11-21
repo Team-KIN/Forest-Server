@@ -1,7 +1,7 @@
 package team.kin.forest.domain.comment.persistence.entity
 
 import team.kin.forest.domain.post.persistence.entity.PostJpaEntity
-import team.kin.forest.domain.user.persistence.entity.User
+import team.kin.forest.domain.user.persistence.entity.UserJpaEntity
 import team.kin.forest.global.entity.BaseUUIDEntity
 import java.util.UUID
 import javax.persistence.*
@@ -19,5 +19,5 @@ class CommentJpaEntity (
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", columnDefinition = "BINARY(16)", nullable = false, updatable = false)
-    val user: User
+    val user: UserJpaEntity
 ) : BaseUUIDEntity(id)

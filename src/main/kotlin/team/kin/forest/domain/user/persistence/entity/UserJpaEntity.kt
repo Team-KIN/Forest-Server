@@ -6,7 +6,7 @@ import javax.persistence.Column
 import javax.persistence.Entity
 
 @Entity
-class User(
+class UserJpaEntity(
     override val id: UUID,
 
     @Column(columnDefinition = "VARCHAR(12)", nullable = false, updatable = false)
