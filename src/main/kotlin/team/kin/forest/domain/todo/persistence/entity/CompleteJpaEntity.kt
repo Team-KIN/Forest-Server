@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 
 @Entity
-class Complete (
+class CompleteJpaEntity (
     override val id: UUID,
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -18,5 +18,5 @@ class Complete (
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "public_todo_id", columnDefinition = "BINARY(16)", nullable = false, updatable = false)
-    val publicTodo: PublicTodo
+    val publicTodo: PublicTodoJpaEntity
 ) : BaseUUIDEntity(id)

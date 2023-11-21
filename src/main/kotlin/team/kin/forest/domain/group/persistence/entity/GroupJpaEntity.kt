@@ -7,7 +7,7 @@ import java.util.UUID
 import javax.persistence.*
 
 @Entity
-class Group (
+class GroupJpaEntity (
     override val id: UUID,
 
     @Column(columnDefinition = "VARCHAR(40)", nullable = false, updatable = false)
