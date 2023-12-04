@@ -11,10 +11,10 @@ import javax.persistence.*
 class PostJpaEntity (
     override val id: UUID,
 
-    @Column(columnDefinition = "VARCHAR(100)", nullable = false)
+    @Column(columnDefinition = "VARCHAR(30)", nullable = false)
     var title: String,
 
-    @Column(columnDefinition = "VARCHAR(1000)", nullable = false)
+    @Column(columnDefinition = "VARCHAR(300)", nullable = false)
     var content: String,
 
     @Enumerated(EnumType.STRING)
