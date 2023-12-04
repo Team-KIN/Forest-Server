@@ -10,7 +10,7 @@ import javax.persistence.*
 class CommentJpaEntity (
     override val id: UUID,
 
-    @Column(columnDefinition = "BINARY(500)", nullable = false)
+    @Column(columnDefinition = "VARCHAR(150)", nullable = false)
     val content: String,
 
     @ManyToOne(fetch = FetchType.LAZY)
