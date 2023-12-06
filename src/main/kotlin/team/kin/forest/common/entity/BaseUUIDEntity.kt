@@ -1,4 +1,4 @@
-package team.kin.forest.global.entity
+package team.kin.forest.common.entity
 
 import org.hibernate.annotations.GenericGenerator
 import java.util.*
@@ -13,5 +13,5 @@ abstract class BaseUUIDEntity(
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(columnDefinition = "BINARY(16)", nullable = false)
-    open val id: UUID = UUID.randomUUID()
+    open val userIdx: UUID = UUID.randomUUID()
 ) : BaseTimeEntity()

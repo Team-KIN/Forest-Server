@@ -1,4 +1,4 @@
-package team.kin.forest.global.entity
+package team.kin.forest.common.entity
 
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
