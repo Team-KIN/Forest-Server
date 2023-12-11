@@ -16,6 +16,6 @@ class CompleteJpaEntity (
     val user: UserJpaEntity,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "public_todo_id", columnDefinition = "BINARY(16)", nullable = false, updatable = false)
-    val publicTodo: PublicTodoJpaEntity
+    @JoinColumn(name = "todo_id", columnDefinition = "BINARY(16)", nullable = false, updatable = false)
+    val todo: TodoJpaEntity
 ) : BaseLongIdEntity(id)
