@@ -3,13 +3,13 @@ package team.kin.forest.domain.todo.persistence.entity
 import team.kin.forest.domain.group.persistence.entity.GroupJpaEntity
 import team.kin.forest.domain.todo.persistence.enums.TodoStatus
 import team.kin.forest.domain.user.persistence.entity.UserJpaEntity
-import team.kin.forest.global.entity.BaseUUIDEntity
+import team.kin.forest.global.entity.BaseLongIdEntity
 import java.util.*
 import javax.persistence.*
 
 @Entity
 class PrivateTodoJpaEntity (
-    override val id: UUID,
+    override val id: Long,
 
     @Column(columnDefinition = "VARCHAR(100)", nullable = false)
     var content: String,
@@ -25,4 +25,4 @@ class PrivateTodoJpaEntity (
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", columnDefinition = "BINARY(16)", nullable = false, updatable = false)
     val user: UserJpaEntity
-) : BaseUUIDEntity(id)
+) : BaseLongIdEntity(id)
