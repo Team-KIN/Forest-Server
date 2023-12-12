@@ -4,8 +4,10 @@ import team.kin.forest.common.entity.BaseUUIDEntity
 import java.util.UUID
 import javax.persistence.Column
 import javax.persistence.Entity
+import javax.persistence.Table
 
 @Entity
+@Table(name = "user")
 class UserJpaEntity(
     override val id: UUID,
 
