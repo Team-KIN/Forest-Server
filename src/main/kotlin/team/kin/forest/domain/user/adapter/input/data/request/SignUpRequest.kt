@@ -1,6 +1,7 @@
 package team.kin.forest.domain.user.adapter.input.data.request
 
 import org.hibernate.validator.constraints.Length
+import org.hibernate.validator.constraints.URL
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.Pattern
 
@@ -13,6 +14,7 @@ data class SignUpRequest(
     val email: String,
 
     @field:NotBlank(message = "비밀번호는 필수값 입니다.")
+    @field:Length(min = 8, max = 20, message = "비밀번호의 글자 수는 8 ~ 20자 사이여야 합니다.")
     @field:Pattern(
         regexp = "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#\$%^&*?~])[a-zA-Z0-9!@#\$%^&*?~]{8,20}\$",
         message = "비밀번호는 대소문자와 특수문자를 한개씩 포함하여야 합니다."
@@ -20,8 +22,10 @@ data class SignUpRequest(
     val password: String,
 
     @field:NotBlank(message = "이름은 필수값 입니다.")
+    @field:Length(min = 2, max = 12, message = "이름의 글자 수는 2 ~ 10자 사이여야 합니다.")
     val name: String,
 
     @field:NotBlank
+    @field:URL(message = "올바르지 않은 프로필 url 형식 입니다.")
     val profileUrl: String
 )
