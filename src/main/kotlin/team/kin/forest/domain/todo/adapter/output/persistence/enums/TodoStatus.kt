@@ -1,4 +1,4 @@
-package team.kin.forest.domain.todo.persistence.enums
+package team.kin.forest.domain.todo.adapter.output.persistence.enums
 
 /**
  * 개인 투두 상태 enum

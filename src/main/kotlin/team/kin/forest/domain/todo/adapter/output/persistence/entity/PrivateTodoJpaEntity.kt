@@ -1,9 +1,9 @@
-package team.kin.forest.domain.todo.persistence.entity
+package team.kin.forest.domain.todo.adapter.output.persistence.entity
 
 import team.kin.forest.domain.group.persistence.entity.GroupJpaEntity
-import team.kin.forest.domain.todo.persistence.enums.TodoStatus
-import team.kin.forest.domain.user.persistence.entity.UserJpaEntity
-import team.kin.forest.global.entity.BaseUUIDEntity
+import team.kin.forest.domain.todo.adapter.output.persistence.enums.TodoStatus
+import team.kin.forest.domain.user.adapter.output.persistence.entity.UserJpaEntity
+import team.kin.forest.common.entity.BaseUUIDEntity
 import java.util.*
 import javax.persistence.*
 
