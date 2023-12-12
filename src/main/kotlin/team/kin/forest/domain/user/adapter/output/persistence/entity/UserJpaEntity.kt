@@ -7,7 +7,7 @@ import javax.persistence.Entity
 
 @Entity
 class UserJpaEntity(
-    override val userIdx: UUID,
+    override val id: UUID,
 
     @Column(columnDefinition = "VARCHAR(12)", nullable = false, updatable = false)
     val name: String,
@@ -20,4 +20,4 @@ class UserJpaEntity(
 
     @Column(columnDefinition = "TEXT", nullable = false)
     var profileUrl: String
-) : BaseUUIDEntity(userIdx)
+) : BaseUUIDEntity(id)
