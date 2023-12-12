@@ -5,4 +5,7 @@ enum class ErrorCode(
     val status: Int
 ) {
 
+    // ACCOUNT
+    DUPLICATE_ACCOUNT_EMAIL("중복된 이메일 입니다.", 409),
+
 }
