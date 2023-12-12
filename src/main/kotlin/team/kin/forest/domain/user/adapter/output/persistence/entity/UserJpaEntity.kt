@@ -17,7 +17,7 @@ class UserJpaEntity(
     @Column(columnDefinition = "VARCHAR(300)", nullable = false)
     var email: String,
 
-    @Column(columnDefinition = "VARCHAR(16)", nullable = false)
+    @Column(columnDefinition = "VARCHAR(60)", nullable = false)
     var password: String,
 
     @Column(columnDefinition = "TEXT", nullable = false)
