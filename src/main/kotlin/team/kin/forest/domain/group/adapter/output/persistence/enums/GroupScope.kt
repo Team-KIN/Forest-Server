@@ -1,4 +1,4 @@
-package team.kin.forest.domain.group.persistence.enums
+package team.kin.forest.domain.group.adapter.output.persistence.enums
 
 /**
  * 그룹 공개 범위 enum

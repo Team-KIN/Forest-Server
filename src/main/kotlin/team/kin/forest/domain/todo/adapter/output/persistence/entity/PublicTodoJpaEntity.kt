@@ -1,6 +1,6 @@
 package team.kin.forest.domain.todo.adapter.output.persistence.entity
 
-import team.kin.forest.domain.group.persistence.entity.GroupJpaEntity
+import team.kin.forest.domain.group.adapter.output.persistence.entity.GroupJpaEntity
 import team.kin.forest.common.entity.BaseUUIDEntity
 import java.util.*
 import javax.persistence.*

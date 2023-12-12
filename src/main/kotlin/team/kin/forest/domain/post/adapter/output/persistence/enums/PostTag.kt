@@ -1,4 +1,4 @@
-package team.kin.forest.domain.post.persistence.enums
+package team.kin.forest.domain.post.adapter.output.persistence.enums
 
 /**
  * 게시글 유형 분류 enum

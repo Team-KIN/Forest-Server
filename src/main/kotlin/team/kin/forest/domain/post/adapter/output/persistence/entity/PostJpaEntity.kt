@@ -1,7 +1,7 @@
-package team.kin.forest.domain.post.persistence.entity
+package team.kin.forest.domain.post.adapter.output.persistence.entity
 
-import team.kin.forest.domain.group.persistence.entity.GroupJpaEntity
-import team.kin.forest.domain.post.persistence.enums.PostTag
+import team.kin.forest.domain.group.adapter.output.persistence.entity.GroupJpaEntity
+import team.kin.forest.domain.post.adapter.output.persistence.enums.PostTag
 import team.kin.forest.domain.user.adapter.output.persistence.entity.UserJpaEntity
 import team.kin.forest.common.entity.BaseUUIDEntity
 import java.util.UUID
