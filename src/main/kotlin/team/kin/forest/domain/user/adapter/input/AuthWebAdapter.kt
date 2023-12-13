@@ -12,7 +12,7 @@ import team.kin.forest.domain.user.application.port.input.SignUpUseCase
 import javax.validation.Valid
 
 @RestController
-@RequestMapping("auth")
+@RequestMapping("/auth")
 class AuthWebAdapter(
     private val authDataMapper: AuthDataMapper,
     private val signUpUseCase: SignUpUseCase
