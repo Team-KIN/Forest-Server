@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationEventPublisher
 import team.kin.forest.common.annotation.ServiceWithTransaction
 import team.kin.forest.domain.user.application.common.util.AuthenticationValidator
 import team.kin.forest.domain.user.application.event.DeleteAuthenticationEvent
-import team.kin.forest.domain.user.application.exception.DuplicateAccountEmailException
+import team.kin.forest.domain.user.application.exception.DuplicateUserEmailException
 import team.kin.forest.domain.user.application.port.input.SignUpUseCase
 import team.kin.forest.domain.user.application.port.input.dto.SignUpDto
 import team.kin.forest.domain.user.application.port.output.CommandUserPort
@@ -23,7 +23,7 @@ class SignUpService(
 ) : SignUpUseCase {
 
     override fun execute(dto: SignUpDto) {
-        if (queryUserPort.existsByEmail(dto.email)) throw DuplicateAccountEmailException()
+        if (queryUserPort.existsByEmail(dto.email)) throw DuplicateUserEmailException()
 
         val authentication = authenticationValidator.verifyAuthenticationByEmail(dto.email)
         val deleteAuthenticationEvent = DeleteAuthenticationEvent(authentication)
