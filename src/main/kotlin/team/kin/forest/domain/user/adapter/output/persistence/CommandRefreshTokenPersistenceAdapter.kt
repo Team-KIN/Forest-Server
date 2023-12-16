@@ -10,7 +10,7 @@ import team.kin.forest.domain.user.domain.RefreshToken
 class CommandRefreshTokenPersistenceAdapter(
     private val refreshTokenRepository: RefreshTokenRepository,
     private val refreshTokenMapper: RefreshTokenMapper
-): CommandRefreshTokenPort {
+) : CommandRefreshTokenPort {
 
     override fun saveRefreshToken(refreshToken: RefreshToken): String {
         val refreshTokenEntity = refreshTokenMapper.toEntity(refreshToken)
