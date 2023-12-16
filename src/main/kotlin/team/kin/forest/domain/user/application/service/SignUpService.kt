@@ -10,6 +10,7 @@ import team.kin.forest.domain.user.application.port.input.dto.SignUpDto
 import team.kin.forest.domain.user.application.port.output.CommandUserPort
 import team.kin.forest.domain.user.application.port.output.PasswordEncodePort
 import team.kin.forest.domain.user.application.port.output.QueryUserPort
+import team.kin.forest.domain.user.domain.Authority
 import team.kin.forest.domain.user.domain.User
 import java.util.UUID
 
@@ -35,7 +36,8 @@ class SignUpService(
                 name = it.name,
                 email = it.email,
                 password = passwordEncodePort.passwordEncode(it.password),
-                profileUrl = it.profileUrl
+                profileUrl = it.profileUrl,
+                authority = Authority.ROLE_ACCOUNT
             )
         }
         commandUserPort.saveUser(user)

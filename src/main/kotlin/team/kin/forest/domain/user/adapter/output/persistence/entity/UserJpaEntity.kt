@@ -1,10 +1,9 @@
 package team.kin.forest.domain.user.adapter.output.persistence.entity
 
 import team.kin.forest.common.entity.BaseUUIDEntity
+import team.kin.forest.domain.user.domain.Authority
 import java.util.UUID
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "user")
@@ -21,5 +20,8 @@ class UserJpaEntity(
     var password: String,
 
     @Column(columnDefinition = "TEXT", nullable = false)
-    var profileUrl: String
+    var profileUrl: String,
+
+    @Enumerated(EnumType.STRING)
+    val authority: Authority
 ) : BaseUUIDEntity(id)
