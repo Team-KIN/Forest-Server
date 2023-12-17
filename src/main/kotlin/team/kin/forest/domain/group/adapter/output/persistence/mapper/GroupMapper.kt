@@ -9,17 +9,16 @@ import team.kin.forest.domain.user.adapter.output.persistence.mapper.UserMapper
 class GroupMapper (
     private val userMapper: UserMapper
 ){
-    fun toDomain(entity: GroupJpaEntity) = entity.run {
+fun toDomain(entity: GroupJpaEntity) =
         Group(
-            id = id,
-            name = name,
-            content = content,
-            purpose = purpose,
-            code = code,
-            groupScope = groupScope,
-            manager = userMapper.toDomain(manager)
+            id = entity.id,
+            name = entity.name,
+            content = entity.content,
+            purpose = entity.purpose,
+            code = entity.code,
+            groupScope = entity.groupScope,
+            manager = userMapper.toDomain(entity.manager)
         )
-    }
 
     fun toDomain(entities: List<GroupJpaEntity>) = entities.map {
         Group(
@@ -33,15 +32,13 @@ class GroupMapper (
         )
     }
 
-    fun toEntity(dto: Group) = dto.run {
+fun toEntity(dto: Group) =
         GroupJpaEntity(
-            id = id,
-            name = name,
-            content = content,
-            purpose = purpose,
-            code = code,
-            groupScope = groupScope,
-            manager = userMapper.toEntity(manager)
+            id = dto.id,
+            name = dto.name,
+            content = dto.content,
+            purpose = dto.purpose,
+            code = dto.code,
+            groupScope = dto.groupScope,
+            manager = userMapper.toEntity(dto.manager)
         )
-    }
-}
