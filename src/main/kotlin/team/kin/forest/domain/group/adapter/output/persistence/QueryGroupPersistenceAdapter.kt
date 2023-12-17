@@ -1,4 +1,4 @@
-package team.kin.forest.domain.group.adapter.output
+package team.kin.forest.domain.group.adapter.output.persistence
 
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
