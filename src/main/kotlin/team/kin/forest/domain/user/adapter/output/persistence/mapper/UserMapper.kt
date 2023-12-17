@@ -17,16 +17,14 @@ class UserMapper {
             authority = domain.authority
         )
 
-    fun toDomain(entity: UserJpaEntity?): User? =
-        entity?.let {
-            User(
-                id = entity.id,
-                name = entity.name,
-                email = entity.email,
-                password = entity.password,
-                profileUrl = entity.profileUrl,
-                authority = entity.authority
-            )
-        }
+    fun toDomain(entity: UserJpaEntity): User =
+        User(
+            id = entity.id,
+            name = entity.name,
+            email = entity.email,
+            password = entity.password,
+            profileUrl = entity.profileUrl,
+            authority = entity.authority
+        )
 
 }
