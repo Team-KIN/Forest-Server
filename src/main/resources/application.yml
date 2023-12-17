@@ -28,5 +28,6 @@ spring:
 jwt:
   access-secret: ${JWT_ACCESS}
   refresh-secret: ${JWT_REFRESH}
-  access-expiration: ${ACCESS_EXP}
-  refresh-expiration: ${REFRESH_EXP}
+  time:
+    access-expiration: ${ACCESS_EXP}
+    refresh-expiration: ${REFRESH_EXP}
