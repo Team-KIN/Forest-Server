@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import team.kin.forest.domain.group.adapter.input.data.response.QueryGroupResponse
+import team.kin.forest.domain.group.adapter.input.data.response.QueryGroupsResponse
 import team.kin.forest.domain.group.adapter.input.mapper.GroupDataMapper
 import team.kin.forest.domain.group.application.port.input.QueryGroupsUseCase
 
@@ -16,8 +16,8 @@ class GroupWebAdapter(
 ) {
 
     @GetMapping
-    fun queryGroups(): ResponseEntity<List<QueryGroupResponse>> =
+    fun queryGroups(): ResponseEntity<QueryGroupsResponse> =
         queryGroupsUseCase.execute()
-            .map { groupDataMapper toResponse it }
+            .let { groupDataMapper toResponse it }
             .let { ResponseEntity.ok(it) }
 }
