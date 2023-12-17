@@ -33,15 +33,13 @@ class GroupMapper (
         )
     }
 
-    fun toEntity(dto: Group) = dto.run {
+fun toEntity(dto: Group) =
         GroupJpaEntity(
-            id = id,
-            name = name,
-            content = content,
-            purpose = purpose,
-            code = code,
-            groupScope = groupScope,
-            manager = userMapper.toEntity(manager)
+            id = dto.id,
+            name = dto.name,
+            content = dto.content,
+            purpose = dto.purpose,
+            code = dto.code,
+            groupScope = dto.groupScope,
+            manager = userMapper.toEntity(dto.manager)
         )
-    }
-}
