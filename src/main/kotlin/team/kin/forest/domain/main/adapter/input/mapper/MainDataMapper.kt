@@ -8,7 +8,7 @@ import team.kin.forest.domain.main.adapter.input.data.response.QueryMainResponse
 @Component
 class MainDataMapper {
     infix fun toResponse(dto: MainDto) = QueryMainResponse(
-       name = dto.name,
+        name = dto.name,
         email = dto.email,
         profileImg = dto.profileImg,
         groups = dto.groups.map {
