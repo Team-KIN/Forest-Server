@@ -17,7 +17,7 @@ class QueryGroupDetailsService(
         val group = groupPort.findByIdOrNull(id)
             ?: throw GroupNotFoundException()
 
-        val headcount = memberPort.countByGroup(group)
+        val headcount = memberPort.countByGroupId(group.id)
 
         return GroupDetailsDto(
             name = group.name,

@@ -1,8 +1,8 @@
 package team.kin.forest.domain.group.application.port.output
 
-import team.kin.forest.domain.group.domain.Group
+import java.util.UUID
 
 
 interface QueryMemberPort {
-    fun countByGroup(group: Group): Int
+    fun countByGroupId(groupId: UUID): Int
 }

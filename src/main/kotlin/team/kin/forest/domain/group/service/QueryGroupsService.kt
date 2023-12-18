@@ -17,8 +17,8 @@ class QueryGroupsService(
     override fun execute(): List<GroupsDto> {
         val groups = queryGroupPort.findAllByGroupScope(GroupScope.PUBLIC)
             .map {
-                val headcount = queryMemberPort.countByGroup(it)
-                val todo = queryTodoPort.countByGroup(it)
+                val headcount = queryMemberPort.countByGroupId(it.id)
+                val todo = queryTodoPort.countByGroupId(it.id)
 
                 GroupsDto(
                     id = it.id,
