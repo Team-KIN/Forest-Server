@@ -33,9 +33,12 @@ class SecurityConfig(
     private fun authorizeHttpRequests(http: HttpSecurity) {
         http.authorizeHttpRequests()
             .mvcMatchers("/auth/**").permitAll()
+
             .mvcMatchers(HttpMethod.GET, "/group").authenticated()
             .mvcMatchers(HttpMethod.GET, "/group/{id}").authenticated()
             .mvcMatchers(HttpMethod.POST, "/group").authenticated()
+
+            .mvcMatchers(HttpMethod.GET, "/main").authenticated()
     }
 
     private fun exceptionHandling(http: HttpSecurity) {
