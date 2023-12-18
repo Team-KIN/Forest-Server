@@ -8,5 +8,6 @@ interface QueryUserPort {
     fun existsByEmail(email: String): Boolean
     fun findByEmailOrNull(email: String): User?
     fun findByIdOrNull(id: UUID): User?
+    fun findCurrentUser(): User?
 
 }
