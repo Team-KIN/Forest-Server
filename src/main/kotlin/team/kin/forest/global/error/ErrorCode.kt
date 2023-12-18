@@ -11,6 +11,9 @@ enum class ErrorCode(
     PASSWORD_NOT_MATCH("비밀번호가 일치하지 않습니다.", 400),
 
     // AUTHENTICATION
-    AUTHENTICATION_NOT_FOUND("인증되지 않은 사용자 입니다.", 404)
+    AUTHENTICATION_NOT_FOUND("인증되지 않은 사용자 입니다.", 404),
+
+    // GROUP
+    GROUP_NOT_FOUND("그룹을 찾을 수 없습니다.", 404)
 
 }
