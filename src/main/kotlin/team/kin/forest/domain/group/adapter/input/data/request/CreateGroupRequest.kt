@@ -7,15 +7,15 @@ import javax.validation.constraints.NotBlank
 data class CreateGroupRequest(
     @field:NotBlank(message = "그룹 이름은 필수값입니다.")
     @field:Length(min = 2, max = 40)
-    private val name: String,
+    val name: String,
 
     @field:NotBlank(message = "그룹 설명은 필수값입니다.")
     @field:Length(max = 100)
-    private val content: String,
+    val content: String,
 
     @field:NotBlank(message = "그룹 목적은 필수값입니다.")
     @field:Length(max = 100)
-    private val purpose: String,
+    val purpose: String,
 
-    private val groupScope: GroupScope
+    val groupScope: GroupScope
 )

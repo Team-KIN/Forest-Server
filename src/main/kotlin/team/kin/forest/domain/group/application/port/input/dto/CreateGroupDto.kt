@@ -6,5 +6,5 @@ data class CreateGroupDto (
     val name: String,
     val content: String,
     val purpose: String,
-    val GroupScope: GroupScope
+    val groupScope: GroupScope
 )
