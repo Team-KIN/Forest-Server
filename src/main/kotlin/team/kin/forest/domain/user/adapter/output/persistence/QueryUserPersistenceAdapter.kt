@@ -7,9 +7,10 @@ import team.kin.forest.domain.user.adapter.output.persistence.repository.UserRep
 import team.kin.forest.domain.user.application.port.output.QueryUserPort
 import team.kin.forest.domain.user.application.port.output.SecurityPort
 import team.kin.forest.domain.user.domain.User
+import java.util.*
 
 @Component
-class QueryUserPersistencxeAdapter(
+class QueryUserPersistenceAdapter(
     private val securityPort: SecurityPort,
     private val userRepository: UserRepository,
     private val userMapper: UserMapper
@@ -20,6 +21,11 @@ class QueryUserPersistencxeAdapter(
 
     override fun findByEmailOrNull(email: String): User? {
         val userEntity = userRepository.findByEmail(email)
+        return userEntity?.let { userMapper.toDomain(it) }
+    }
+
+    override fun findByIdOrNull(id: UUID): User? {
+        val userEntity = userRepository.findByIdOrNull(id)
         return userEntity?.let { userMapper.toDomain(it) }
     }
 

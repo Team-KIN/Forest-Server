@@ -6,12 +6,15 @@ import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.web.SecurityFilterChain
+import team.kin.forest.domain.user.application.port.output.TokenParsePort
 import team.kin.forest.global.security.handler.CustomAccessDeniedHandler
 import team.kin.forest.global.security.handler.CustomAuthenticationEntryPoint
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig {
+class SecurityConfig(
+    private val jwtParserAdapter: TokenParsePort
+) {
 
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
@@ -21,6 +24,7 @@ class SecurityConfig {
             .csrf().disable()
             .formLogin().disable()
             .httpBasic().disable()
+            .apply(FilterConfig(jwtParserAdapter))
         authorizeHttpRequests(http)
         exceptionHandling(http)
         return http.build()
