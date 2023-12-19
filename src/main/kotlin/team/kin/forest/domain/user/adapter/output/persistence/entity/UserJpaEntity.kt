@@ -10,7 +10,7 @@ import javax.persistence.*
 class UserJpaEntity(
     override val id: UUID,
 
-    @Column(columnDefinition = "VARCHAR(12)", nullable = false, updatable = false)
+    @Column(columnDefinition = "VARCHAR(12)", nullable = false)
     val name: String,
 
     @Column(columnDefinition = "VARCHAR(300)", nullable = false)
