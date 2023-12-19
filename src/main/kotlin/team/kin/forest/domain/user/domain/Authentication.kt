@@ -22,4 +22,8 @@ data class Authentication(
             authCodeCount = authCodeCount.inc()
         )
 
+    fun certified(): Authentication =
+        this.copy(
+            isVerified = true
+        )
 }
