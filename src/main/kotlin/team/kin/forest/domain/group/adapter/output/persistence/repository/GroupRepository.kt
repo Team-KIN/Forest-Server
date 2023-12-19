@@ -7,4 +7,5 @@ import java.util.UUID
 
 interface GroupRepository : CrudRepository<GroupJpaEntity, UUID> {
     fun findAllByGroupScope(group: GroupScope): List<GroupJpaEntity>
+    fun findByCode(code: String): GroupJpaEntity?
 }
