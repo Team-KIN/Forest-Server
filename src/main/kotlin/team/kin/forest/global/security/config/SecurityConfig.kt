@@ -43,6 +43,9 @@ class SecurityConfig(
             .mvcMatchers(HttpMethod.GET, "/main").authenticated()
 
             .mvcMatchers(HttpMethod.GET, "/user").authenticated()
+            .mvcMatchers(HttpMethod.PATCH, "/user").authenticated()
+            .mvcMatchers(HttpMethod.PATCH, "/user/password").authenticated()
+            .mvcMatchers(HttpMethod.PATCH, "/user/profile").authenticated()
     }
 
     private fun exceptionHandling(http: HttpSecurity) {
