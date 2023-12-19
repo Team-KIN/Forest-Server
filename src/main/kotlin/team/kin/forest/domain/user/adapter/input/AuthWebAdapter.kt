@@ -7,10 +7,7 @@ import team.kin.forest.domain.user.adapter.input.data.request.SignInRequest
 import team.kin.forest.domain.user.adapter.input.data.request.SignUpRequest
 import team.kin.forest.domain.user.adapter.input.data.response.TokenResponse
 import team.kin.forest.domain.user.adapter.input.mapper.AuthDataMapper
-import team.kin.forest.domain.user.application.port.input.ReissueTokenUseCase
-import team.kin.forest.domain.user.application.port.input.SendAuthCodeUseCase
-import team.kin.forest.domain.user.application.port.input.SignInUseCase
-import team.kin.forest.domain.user.application.port.input.SignUpUseCase
+import team.kin.forest.domain.user.application.port.input.*
 import javax.validation.Valid
 
 @RestController
@@ -20,7 +17,8 @@ class AuthWebAdapter(
     private val signUpUseCase: SignUpUseCase,
     private val signInUseCase: SignInUseCase,
     private val reissueTokenUseCase: ReissueTokenUseCase,
-    private val sendAuthCodeUseCase: SendAuthCodeUseCase
+    private val sendAuthCodeUseCase: SendAuthCodeUseCase,
+    private val verifyAuthCodeUseCase: VerifyAuthCodeUseCase
 ) {
 
     @PostMapping("/signup")
@@ -43,6 +41,11 @@ class AuthWebAdapter(
     @PostMapping("/send/phone-number/{phoneNumber}")
     fun sendAuthCode(@PathVariable phoneNumber: String): ResponseEntity<Void> =
         sendAuthCodeUseCase.execute(phoneNumber)
+            .run { ResponseEntity.status(HttpStatus.NO_CONTENT).build() }
+
+    @GetMapping("/auth-code/{authCode}/phone-number/{phoneNumber}")
+    fun verifyAuthCode(@PathVariable authCode: Int, @PathVariable phoneNumber: String): ResponseEntity<Void> =
+        verifyAuthCodeUseCase.execute(authCode, phoneNumber)
             .run { ResponseEntity.status(HttpStatus.NO_CONTENT).build() }
 
 }
