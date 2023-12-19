@@ -5,5 +5,6 @@ import team.kin.forest.domain.user.domain.RefreshToken
 interface CommandRefreshTokenPort {
 
     fun saveRefreshToken(refreshToken: RefreshToken): String
+    fun deleteRefreshToken(refreshToken: RefreshToken)
 
 }
