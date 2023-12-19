@@ -17,4 +17,9 @@ data class Authentication(
             authenticationCount = authenticationCount.inc()
         )
 
+    fun increaseAuthCodeCount(): Authentication =
+        this.copy(
+            authCodeCount = authCodeCount.inc()
+        )
+
 }
