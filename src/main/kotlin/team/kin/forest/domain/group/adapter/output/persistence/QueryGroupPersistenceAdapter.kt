@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component
 import team.kin.forest.domain.group.adapter.output.persistence.enums.GroupScope
 import team.kin.forest.domain.group.adapter.output.persistence.mapper.GroupMapper
 import team.kin.forest.domain.group.adapter.output.persistence.repository.GroupRepository
+import team.kin.forest.domain.group.application.port.input.dto.GroupCodeDto
 import team.kin.forest.domain.group.application.port.output.QueryGroupPort
 import team.kin.forest.domain.group.domain.Group
 import java.util.*
@@ -22,6 +23,11 @@ class QueryGroupPersistenceAdapter (
     override fun findAllByGroupScope(groupScope: GroupScope): List<Group> {
         val groupEntities = groupRepository.findAllByGroupScope(groupScope)
         return groupMapper.toDomain(groupEntities)
+    }
+
+    override fun findByCode(groupCodeDto: GroupCodeDto): Group? {
+        val groupEntity = groupRepository.findByCode(groupCodeDto.code)
+        return groupEntity?.let { groupMapper.toDomain(it) }
     }
 
 }

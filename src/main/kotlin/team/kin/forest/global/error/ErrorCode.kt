@@ -15,6 +15,8 @@ enum class ErrorCode(
 
     // GROUP
     GROUP_NOT_FOUND("그룹을 찾을 수 없습니다.", 404),
+    PRIVATE_GROUP("공개되지 않은 그룹입니다.",409),
+    ALREADY_JOIN_GROUP("이미 가입되어 있는 그룹입니다.", 409),
 
     // TOKEN
     INVALID_TOKEN("유효하지 않은 토큰입니다.", 401),
