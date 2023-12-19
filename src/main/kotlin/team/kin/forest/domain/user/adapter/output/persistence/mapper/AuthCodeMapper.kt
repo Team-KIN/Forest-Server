@@ -14,4 +14,11 @@ class AuthCodeMapper {
             authCode.expiredAt
         )
 
+    fun toDomain(authCodeEntity: AuthCodeRedisEntity): AuthCode =
+        AuthCode(
+            phoneNumber = authCodeEntity.phoneNumber,
+            authCode = authCodeEntity.authCode,
+            expiredAt = authCodeEntity.expiredAt
+        )
+
 }
