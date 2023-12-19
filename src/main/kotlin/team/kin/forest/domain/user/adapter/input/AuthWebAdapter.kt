@@ -38,8 +38,8 @@ class AuthWebAdapter(
             .let { authDataMapper toResponse it }
             .let { ResponseEntity.ok(it) }
 
-    @PostMapping("/send/phone-number/{phoneNumber}")
-    fun sendAuthCode(@PathVariable phoneNumber: String): ResponseEntity<Void> =
+    @PostMapping("/send/phone-number/{phone_number}")
+    fun sendAuthCode(@PathVariable("phone_number") phoneNumber: String): ResponseEntity<Void> =
         sendAuthCodeUseCase.execute(phoneNumber)
             .run { ResponseEntity.status(HttpStatus.NO_CONTENT).build() }
 
