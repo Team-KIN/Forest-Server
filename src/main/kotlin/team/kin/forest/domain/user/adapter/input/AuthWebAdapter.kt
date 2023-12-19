@@ -18,7 +18,8 @@ class AuthWebAdapter(
     private val signInUseCase: SignInUseCase,
     private val reissueTokenUseCase: ReissueTokenUseCase,
     private val sendAuthCodeUseCase: SendAuthCodeUseCase,
-    private val verifyAuthCodeUseCase: VerifyAuthCodeUseCase
+    private val verifyAuthCodeUseCase: VerifyAuthCodeUseCase,
+    private val logoutUserUseCase: LogoutUserUseCase
 ) {
 
     @PostMapping("/signup")
@@ -37,6 +38,11 @@ class AuthWebAdapter(
         reissueTokenUseCase.execute(refreshToken)
             .let { authDataMapper toResponse it }
             .let { ResponseEntity.ok(it) }
+
+    @DeleteMapping("/logout")
+    fun logoutAccount(@RequestHeader refreshToken: String): ResponseEntity<Void> =
+        logoutUserUseCase.execute(refreshToken)
+            .let { ResponseEntity.status(HttpStatus.NO_CONTENT).build() }
 
     @PostMapping("/send/phone-number/{phone_number}")
     fun sendAuthCode(@PathVariable("phone_number") phoneNumber: String): ResponseEntity<Void> =
