@@ -24,7 +24,8 @@ class VerifyAuthCodeService(
         val authentication = queryAuthenticationPort.findByPhoneNumberOrNull(phoneNumber)
             ?: throw AuthenticationNotFoundException()
 
-        if (authentication.authCodeCount > 5) throw TooManyAuthCodeRequestException()
+        if (authentication.authCodeCount > 5) 
+            throw TooManyAuthCodeRequestException()
 
         if (authCodeDomain.authCode != authCode) {
             publisher.publishEvent(CreateAuthenticationEvent(authentication.increaseAuthCodeCount()))
