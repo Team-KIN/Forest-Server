@@ -10,7 +10,7 @@ class AuthenticationMapper {
     fun toDomain(entity: AuthenticationRedisEntity?): Authentication? =
         entity?.let {
             Authentication(
-                email = it.email,
+                phoneNumber = it.phoneNumber,
                 authCodeCount = entity.authCodeCount,
                 authenticationCount = entity.authenticationCount,
                 isVerified = entity.isVerified,
@@ -20,7 +20,7 @@ class AuthenticationMapper {
 
     fun toEntity(domain: Authentication): AuthenticationRedisEntity =
         AuthenticationRedisEntity(
-            email = domain.email,
+            phoneNumber = domain.phoneNumber,
             authCodeCount = domain.authCodeCount,
             authenticationCount = domain.authenticationCount,
             isVerified = domain.isVerified,

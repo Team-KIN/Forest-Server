@@ -19,6 +19,9 @@ class UserJpaEntity(
     @Column(columnDefinition = "VARCHAR(60)", nullable = false)
     var password: String,
 
+    @Column(nullable = false, length = 15)
+    var phoneNumber: String,
+
     @Column(columnDefinition = "TEXT", nullable = false)
     var profileUrl: String,
 
