@@ -12,8 +12,8 @@ class AuthenticationValidator(
 ) {
 
     @Transactional(readOnly = true, rollbackFor = [Exception::class])
-    fun verifyAuthenticationByEmail(email: String): Authentication {
-        val authentication = queryAuthenticationPort.findByEmailOrNull(email)
+    fun verifyAuthenticationByEmail(phoneNumber: String): Authentication {
+        val authentication = queryAuthenticationPort.findByPhoneNumberOrNull(phoneNumber)
             ?:throw AuthenticationNotFoundException()
         if (!authentication.isVerified) {
             throw AuthenticationNotFoundException()

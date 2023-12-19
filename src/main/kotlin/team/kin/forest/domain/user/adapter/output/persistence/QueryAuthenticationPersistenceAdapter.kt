@@ -13,9 +13,13 @@ class QueryAuthenticationPersistenceAdapter(
     private val authenticationMapper: AuthenticationMapper
 ): QueryAuthenticationPort {
 
-    override fun findByEmailOrNull(email: String): Authentication? {
-        val authenticationEntity = authenticationRepository.findByIdOrNull(email)
+    override fun findByPhoneNumberOrNull(phoneNumber: String): Authentication? {
+        val authenticationEntity = authenticationRepository.findByIdOrNull(phoneNumber)
         return authenticationMapper.toDomain(authenticationEntity)
+    }
+
+    override fun existsByPhoneNumber(phoneNumber: String): Boolean {
+        return authenticationRepository.existsById(phoneNumber)
     }
 
 }
