@@ -11,8 +11,9 @@ class CommandGroupPersistenceAdapter(
     private val groupMapper: GroupMapper,
     private val groupRepository: GroupRepository
 ) : CommandGroupPort {
-    override fun saveGroup(group: Group) {
+    override fun saveGroup(group: Group): Group {
         val groupEntity = groupMapper.toEntity(group)
-        groupRepository.save(groupEntity)
+        return groupRepository.save(groupEntity)
+            .let { groupMapper.toDomain(it) }
     }
 }
