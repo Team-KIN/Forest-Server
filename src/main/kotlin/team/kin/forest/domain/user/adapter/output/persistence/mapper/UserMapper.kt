@@ -13,6 +13,7 @@ class UserMapper {
             name = domain.name,
             email = domain.email,
             password = domain.password,
+            phoneNumber = domain.phoneNumber,
             profileUrl = domain.profileUrl,
             authority = domain.authority
         )
@@ -23,6 +24,7 @@ class UserMapper {
             name = entity.name,
             email = entity.email,
             password = entity.password,
+            phoneNumber = entity.phoneNumber,
             profileUrl = entity.profileUrl,
             authority = entity.authority
         )

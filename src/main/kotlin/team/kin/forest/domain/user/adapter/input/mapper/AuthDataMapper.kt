@@ -17,6 +17,7 @@ class AuthDataMapper {
             email = request.email,
             password = request.password,
             name = request.name,
+            phoneNumber = request.phoneNumber,
             profileUrl = request.profileUrl
         )
 
