@@ -4,6 +4,7 @@ import team.kin.forest.domain.user.domain.Authentication
 
 interface QueryAuthenticationPort {
 
-    fun findByEmailOrNull(email: String): Authentication?
+    fun findByPhoneNumberOrNull(phoneNumber: String): Authentication?
+    fun existsByPhoneNumber(phoneNumber: String): Boolean
 
 }
