@@ -24,6 +24,9 @@ enum class ErrorCode(
     EXPIRED_REFRESH_TOKEN("만료된 refreshToken 입니다.", 401),
 
     // MESSAGE
-    MESSAGE_SEND_FAILED("coolsms 메세지 전송에 실패하였습니다.", 500)
+    MESSAGE_SEND_FAILED("coolsms 메세지 전송에 실패하였습니다.", 500),
+
+    // AUTH CODE
+    AUTH_CODE_NOT_FOUND("인증 코드를 찾을 수 없습니다.", 404)
 
 }
