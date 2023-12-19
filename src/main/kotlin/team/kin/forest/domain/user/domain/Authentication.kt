@@ -6,4 +6,10 @@ data class Authentication(
     val authenticationCount: Long,
     val isVerified: Boolean,
     val expiredAt: Long
-)
+) {
+
+    companion object {
+        const val EXPIRED_AT = 7200L
+    }
+
+}
