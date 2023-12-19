@@ -26,7 +26,7 @@ class SignUpService(
     override fun execute(dto: SignUpDto) {
         if (queryUserPort.existsByEmail(dto.email)) throw DuplicateUserEmailException()
 
-        val authentication = authenticationValidator.verifyAuthenticationByEmail(dto.email)
+        val authentication = authenticationValidator.verifyAuthenticationByEmail(dto.phoneNumber)
         val deleteAuthenticationEvent = DeleteAuthenticationEvent(authentication)
         publisher.publishEvent(deleteAuthenticationEvent)
 
@@ -36,6 +36,7 @@ class SignUpService(
                 name = it.name,
                 email = it.email,
                 password = passwordEncodePort.passwordEncode(it.password),
+                phoneNumber = it.phoneNumber,
                 profileUrl = it.profileUrl,
                 authority = Authority.ROLE_ACCOUNT
             )

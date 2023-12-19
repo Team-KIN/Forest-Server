@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Length
 import org.hibernate.validator.constraints.URL
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.Pattern
+import javax.validation.constraints.Size
 
 data class SignUpRequest(
     @field:NotBlank(message = "이메일은 필수값 입니다.")
@@ -24,6 +25,10 @@ data class SignUpRequest(
     @field:NotBlank(message = "이름은 필수값 입니다.")
     @field:Length(min = 2, max = 12, message = "이름의 글자 수는 2 ~ 10자 사이여야 합니다.")
     val name: String,
+
+    @field:NotBlank(message = "전화번호는 필수값입니다.")
+    @field:Size(min = 10, max = 11, message = "전화번호의 글자 수는 10 ~ 11자 사이여야 합니다.")
+    val phoneNumber: String,
 
     @field:NotBlank
     @field:URL(message = "올바르지 않은 프로필 url 형식 입니다.")

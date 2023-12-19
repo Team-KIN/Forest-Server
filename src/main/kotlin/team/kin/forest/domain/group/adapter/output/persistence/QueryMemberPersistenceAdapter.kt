@@ -5,12 +5,15 @@ import team.kin.forest.domain.group.adapter.output.persistence.mapper.GroupMappe
 import team.kin.forest.domain.group.adapter.output.persistence.repository.MemberRepository
 import team.kin.forest.domain.group.application.port.output.QueryMemberPort
 import team.kin.forest.domain.group.domain.Group
+import team.kin.forest.domain.group.domain.Member
+import team.kin.forest.domain.user.adapter.output.persistence.mapper.UserMapper
 import java.util.UUID
 
 @Component
 class QueryMemberPersistenceAdapter(
     private val memberRepository: MemberRepository,
-    private val groupMapper: GroupMapper
+    private val groupMapper: GroupMapper,
+    private val userMapper: UserMapper
 ) : QueryMemberPort {
     override fun countByGroupId(groupId: UUID): Int {
         return memberRepository.countByGroupId(groupId)
@@ -21,6 +24,13 @@ class QueryMemberPersistenceAdapter(
         val groupEntities = memberEntities.map { it.group }
 
         return groupEntities.map { groupMapper.toDomain(it) }
+    }
+
+    override fun existsMember(member: Member): Boolean {
+        val userEntity = userMapper.toEntity(member.user)
+        val groupEntity = groupMapper.toEntity(member.group)
+
+        return memberRepository.existsByUserAndGroup(userEntity, groupEntity)
     }
 
 }

@@ -36,6 +36,8 @@ class SecurityConfig(
 
             .mvcMatchers(HttpMethod.GET, "/group").authenticated()
             .mvcMatchers(HttpMethod.GET, "/group/{id}").authenticated()
+            .mvcMatchers(HttpMethod.POST, "/group/{id}").authenticated()
+            .mvcMatchers(HttpMethod.POST, "/group/code").authenticated()
             .mvcMatchers(HttpMethod.POST, "/group").authenticated()
 
             .mvcMatchers(HttpMethod.GET, "/main").authenticated()
