@@ -9,6 +9,7 @@ class UserDataMapper {
     infix fun toResponse(userDto: UserDto) = UserResponse(
         name = userDto.name,
         email = userDto.email,
+        phoneNumber = userDto.phoneNumber,
         profileUrl = userDto.profileUrl
     )
 }

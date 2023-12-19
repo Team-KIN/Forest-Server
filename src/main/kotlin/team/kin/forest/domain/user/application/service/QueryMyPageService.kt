@@ -17,6 +17,7 @@ class QueryMyPageService(
         return UserDto(
             name = user.name,
             email = user.email,
+            phoneNumber = user.phoneNumber,
             profileUrl = user.profileUrl
         )
     }
