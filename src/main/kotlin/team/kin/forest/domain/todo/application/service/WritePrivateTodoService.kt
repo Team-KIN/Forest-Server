@@ -25,10 +25,10 @@ class WritePrivateTodoService(
     private val commandPrivateTodoPort: CommandPrivateTodoPort,
 ) : WritePrivateTodoUseCase {
 
-    override fun execute(id: UUID, content: String) {
+    override fun execute(groupId: UUID, content: String) {
         val user = queryUserPort.findCurrentUser()
             ?: throw UserNotFoundException()
-        val group = queryGroupPort.findByIdOrNull(id)
+        val group = queryGroupPort.findByIdOrNull(groupId)
             ?: throw GroupNotFoundException()
         val member = Member(
             user = user,

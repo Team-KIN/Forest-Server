@@ -4,6 +4,6 @@ import java.util.UUID
 
 interface WritePrivateTodoUseCase {
 
-    fun execute(id: UUID, content: String)
+    fun execute(groupId: UUID, content: String)
 
 }
