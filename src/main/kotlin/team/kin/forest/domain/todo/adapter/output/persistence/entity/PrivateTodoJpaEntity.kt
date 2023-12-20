@@ -5,6 +5,7 @@ import team.kin.forest.domain.user.adapter.output.persistence.entity.UserJpaEnti
 import javax.persistence.*
 
 @Entity
+@Table(name = "private_todo")
 class PrivateTodoJpaEntity (
     override val id: Long,
 

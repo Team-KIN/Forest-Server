@@ -7,6 +7,7 @@ import java.util.*
 import javax.persistence.*
 
 @Entity
+@Table(name = "todo")
 class TodoJpaEntity(
     override val id: UUID,
 
