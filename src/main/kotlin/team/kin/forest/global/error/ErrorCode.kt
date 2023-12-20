@@ -15,10 +15,14 @@ enum class ErrorCode(
     TOO_MANY_AUTHENTICATION_CODE_REQUEST("인증 메세지 요청 5번 초과 한 사용자 입니다.", 429),
 
     // GROUP
+    NOT_GROUP_MEMBER("그룹 멤버가 아닙니다.", 403),
     GROUP_NOT_FOUND("그룹을 찾을 수 없습니다.", 404),
     PRIVATE_GROUP("공개되지 않은 그룹입니다.",409),
     ALREADY_JOIN_GROUP("이미 가입되어 있는 그룹입니다.", 409),
     MEMBER_NOT_FOUND("존재하지 않는 멤버 입니다.", 404),
+
+    // Post
+    POST_NOT_FOUND("게시글을 찾을 수 없습니다.", 404),
 
     // TOKEN
     INVALID_TOKEN("유효하지 않은 토큰입니다.", 401),
