@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import team.kin.forest.common.annotation.MemberOnly
 import team.kin.forest.domain.post.adapter.input.data.QueryPostDetailsResponse
 import team.kin.forest.domain.post.adapter.input.data.QueryPostsResponse
 import team.kin.forest.domain.post.adapter.input.mapper.PostDataMapper
@@ -20,12 +21,14 @@ class PostWebAdapter(
     private val postDataMapper: PostDataMapper
 ) {
     @GetMapping
+    @MemberOnly
     fun queryPosts(@PathVariable("id") groupId: UUID): ResponseEntity<QueryPostsResponse> =
         queryPostsUseCase.execute(groupId)
             .let { postDataMapper toResponse it }
             .let { ResponseEntity.ok(it) }
 
     @GetMapping("/{post_id}")
+    @MemberOnly
     fun queryPostDetails(@PathVariable("post_id") id: UUID, @PathVariable("id") groupId: UUID): ResponseEntity<QueryPostDetailsResponse> =
         queryPostDetailsUseCase.execute(id, groupId)
             .let { postDataMapper toResponse it }
