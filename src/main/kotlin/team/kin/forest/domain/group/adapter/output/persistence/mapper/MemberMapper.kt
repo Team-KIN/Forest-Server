@@ -16,4 +16,11 @@ class MemberMapper(
             group = groupMapper.toEntity(dto.group),
             user = userMapper.toEntity(dto.user)
         )
+
+    fun toDomain(entity: MemberJpaEntity): Member =
+        Member(
+            id = entity.id,
+            user = userMapper.toDomain(entity.user),
+            group = groupMapper.toDomain(entity.group)
+        )
 }
