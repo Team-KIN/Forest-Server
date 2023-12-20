@@ -11,7 +11,7 @@ import team.kin.forest.domain.todo.application.port.input.WritePrivateTodoUseCas
 import java.util.UUID
 
 @RestController
-@RequestMapping("/todo")
+@RequestMapping("/group")
 class TodoWebAdapter(
     private val writePrivateTodoUseCase: WritePrivateTodoUseCase
 ) {
