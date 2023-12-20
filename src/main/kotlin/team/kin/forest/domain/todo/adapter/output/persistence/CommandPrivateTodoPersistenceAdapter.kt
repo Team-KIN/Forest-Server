@@ -14,7 +14,6 @@ class CommandPrivateTodoPersistenceAdapter(
 
     override fun savePrivateTodo(privateTodo: PrivateTodo) {
         val privateTodoEntity = privateTodoMapper.toEntity(privateTodo)
-        println(privateTodoEntity.todo.id)
         privateTodoRepository.save(privateTodoEntity)
     }
 
