@@ -12,8 +12,8 @@ class QueryCommentPersistenceAdapter(
     private val commentRepository: CommentRepository,
     private val commentMapper: CommentMapper
 ) : QueryCommentPort {
-    override fun findAllByPostId(groupId: UUID): List<Comment> {
-        val commentEntities = commentRepository.findAllByPostId(groupId)
+    override fun findAllByPostId(postId: UUID): List<Comment> {
+        val commentEntities = commentRepository.findAllByPostId(postId)
         return commentMapper.toDomain(commentEntities)
     }
 
