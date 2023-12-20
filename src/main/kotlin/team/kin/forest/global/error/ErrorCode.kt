@@ -20,6 +20,9 @@ enum class ErrorCode(
     PRIVATE_GROUP("공개되지 않은 그룹입니다.",409),
     ALREADY_JOIN_GROUP("이미 가입되어 있는 그룹입니다.", 409),
 
+    // Post
+    POST_NOT_FOUND("게시글을 찾을 수 없습니다.", 404),
+
     // TOKEN
     INVALID_TOKEN("유효하지 않은 토큰입니다.", 401),
     INVALID_TOKEN_TYPE("유효하지 않은 토큰 타입 입니다.", 401),
