@@ -17,15 +17,17 @@ class ModifyUserNameService(
         val user = queryUserPort.findCurrentUser()
             ?: throw UserNotFoundException()
 
-        val modifyUser = User(
-            id = user.id,
-            name = userNameDto.name,
-            email = user.email,
-            password = user.password,
-            phoneNumber = user.phoneNumber,
-            profileUrl = user.profileUrl,
-            authority = user.authority,
-        )
+        val modifyUser = user.let {
+            User(
+                id = it.id,
+                name = userNameDto.name,
+                email = it.email,
+                password = it.password,
+                phoneNumber = it.phoneNumber,
+                profileUrl = it.profileUrl,
+                authority = it.authority,
+            )
+        }
 
         commandUserPort.saveUser(modifyUser)
     }
