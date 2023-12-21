@@ -9,6 +9,7 @@ import team.kin.forest.domain.group.application.port.output.QueryMemberPort
 import team.kin.forest.domain.group.domain.Member
 import team.kin.forest.domain.todo.adapter.output.persistence.enums.TodoType
 import team.kin.forest.domain.todo.application.port.input.WritePublicTodoUseCase
+import team.kin.forest.domain.todo.application.port.input.dto.CreateTodoDto
 import team.kin.forest.domain.todo.application.port.output.CommandTodoPort
 import team.kin.forest.domain.todo.domain.Todo
 import team.kin.forest.domain.user.application.exception.UserNotFoundException
@@ -23,7 +24,7 @@ class WritePublicTodoService(
     private val commandTodoPort: CommandTodoPort
 ) : WritePublicTodoUseCase {
 
-    override fun execute(groupId: UUID, content: String) {
+    override fun execute(groupId: UUID, dto: CreateTodoDto) {
         val user = queryUserPort.findCurrentUser()
             ?: throw UserNotFoundException()
         val group = queryGroupPort.findByIdOrNull(groupId)
@@ -42,7 +43,8 @@ class WritePublicTodoService(
 
         val todo = Todo(
             id = UUID.randomUUID(),
-            content = content,
+            content = dto.content,
+            todoStatus = false,
             todoType = TodoType.PUBLIC,
             group = group
         )
