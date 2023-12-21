@@ -1,11 +1,11 @@
 package team.kin.forest.domain.post.adapter.input.mapper
 
 import org.springframework.stereotype.Component
-import team.kin.forest.domain.post.adapter.input.data.QueryPostDetailsResponse
-import team.kin.forest.domain.post.adapter.input.data.QueryPostsResponse
+import team.kin.forest.domain.post.adapter.input.data.response.QueryPostDetailsResponse
+import team.kin.forest.domain.post.adapter.input.data.response.QueryPostsResponse
 import team.kin.forest.domain.post.application.port.output.dto.PostDetailsDto
 import team.kin.forest.domain.post.application.port.output.dto.PostsDto
-import team.kin.forest.domain.post.adapter.input.data.QueryPostsResponse.QueryPostResponse as QueryPostResponse
+import team.kin.forest.domain.post.adapter.input.data.response.QueryPostsResponse.QueryPostResponse as QueryPostResponse
 
 @Component
 class PostDataMapper(

@@ -1,4 +1,4 @@
-package team.kin.forest.domain.post.adapter.input.data
+package team.kin.forest.domain.post.adapter.input.data.response
 
 import team.kin.forest.domain.post.adapter.output.persistence.enums.PostTag
 import java.time.LocalDateTime

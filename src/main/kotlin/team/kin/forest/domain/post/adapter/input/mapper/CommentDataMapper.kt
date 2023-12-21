@@ -2,7 +2,7 @@ package team.kin.forest.domain.post.adapter.input.mapper
 
 import org.springframework.stereotype.Component
 import team.kin.forest.domain.post.application.port.output.dto.CommentDto
-import team.kin.forest.domain.post.adapter.input.data.QueryPostDetailsResponse.QueryCommentsResponse as QueryCommentsResponse
+import team.kin.forest.domain.post.adapter.input.data.response.QueryPostDetailsResponse.QueryCommentsResponse as QueryCommentsResponse
 
 @Component
 class CommentDataMapper {

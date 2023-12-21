@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import team.kin.forest.common.annotation.MemberOnly
-import team.kin.forest.domain.post.adapter.input.data.QueryPostDetailsResponse
-import team.kin.forest.domain.post.adapter.input.data.QueryPostsResponse
+import team.kin.forest.domain.post.adapter.input.data.response.QueryPostDetailsResponse
+import team.kin.forest.domain.post.adapter.input.data.response.QueryPostsResponse
 import team.kin.forest.domain.post.adapter.input.mapper.PostDataMapper
 import team.kin.forest.domain.post.application.port.input.QueryPostDetailsUseCase
 import team.kin.forest.domain.post.application.port.input.QueryPostsUseCase
