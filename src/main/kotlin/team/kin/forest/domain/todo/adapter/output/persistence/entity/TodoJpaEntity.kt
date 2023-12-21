@@ -14,6 +14,9 @@ class TodoJpaEntity(
     @Column(columnDefinition = "VARCHAR(100)", nullable = false)
     var content: String,
 
+    @Column(columnDefinition = "VARCHAR(5)", nullable = false)
+    var todoStatus: Boolean,
+
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(10)", nullable = false)
     var todoType: TodoType,
