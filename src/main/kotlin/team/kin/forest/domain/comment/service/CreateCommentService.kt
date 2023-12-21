@@ -5,6 +5,8 @@ import team.kin.forest.domain.comment.application.port.input.CreateCommentUseCas
 import team.kin.forest.domain.comment.application.port.input.dto.CreateCommentDto
 import team.kin.forest.domain.comment.application.port.output.CommendCommentPort
 import team.kin.forest.domain.comment.domain.Comment
+import team.kin.forest.domain.group.application.exception.GroupNotFoundException
+import team.kin.forest.domain.group.application.port.output.QueryGroupPort
 import team.kin.forest.domain.post.application.exception.PostNotFoundException
 import team.kin.forest.domain.post.application.port.output.QueryPostPort
 import team.kin.forest.domain.user.application.exception.UserNotFoundException
@@ -16,11 +18,14 @@ import java.util.*
 class CreateCommentService(
     private val queryUserPort: QueryUserPort,
     private val queryPostPort: QueryPostPort,
+    private val queryGroupPort: QueryGroupPort,
     private val commendCommentPort: CommendCommentPort
 ) : CreateCommentUseCase {
     override fun execute(groupId: UUID, postId: UUID, createCommentDto: CreateCommentDto) {
         val user = queryUserPort.findCurrentUser()
             ?: throw UserNotFoundException()
+        val group = queryGroupPort.findByIdOrNull(groupId)
+            ?: throw GroupNotFoundException()
         val post = queryPostPort.findByIdOrNull(postId)
             ?: throw PostNotFoundException()
 
