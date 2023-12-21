@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import team.kin.forest.common.annotation.MemberOnly
 import team.kin.forest.domain.comment.adapter.input.data.request.CreateCommentRequest
 import team.kin.forest.domain.comment.adapter.input.mapper.CommentDataMapper
 import team.kin.forest.domain.comment.application.port.input.CreateCommentUseCase
@@ -20,6 +21,7 @@ class CommentWebAdapter(
     private val commentDataMapper: CommentDataMapper
 ) {
     @PostMapping
+    @MemberOnly
     fun createComment(
         @PathVariable("id") groupId: UUID, @PathVariable("post_id") postId: UUID,
         @RequestBody @Valid createCommentRequest: CreateCommentRequest
