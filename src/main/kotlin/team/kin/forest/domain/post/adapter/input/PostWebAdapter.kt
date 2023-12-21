@@ -45,5 +45,5 @@ class PostWebAdapter(
     @MemberOnly
     fun createPost(@PathVariable("id") groupId: UUID, @RequestBody @Valid createPostRequest: CreatePostRequest): ResponseEntity<Void> =
         createPostUseCase.execute(groupId, postDataMapper toDto createPostRequest)
-            .let { ResponseEntity.status(HttpStatus.NO_CONTENT).build() }
+            .let { ResponseEntity.status(HttpStatus.CREATED).build() }
 }
