@@ -9,6 +9,7 @@ import java.util.UUID
 data class Todo(
     val id: UUID,
     val content: String,
+    var todoStatus: Boolean,
     val todoType: TodoType,
     val group: Group
 )

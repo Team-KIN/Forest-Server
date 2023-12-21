@@ -8,6 +8,7 @@ import team.kin.forest.domain.group.application.port.output.QueryMemberPort
 import team.kin.forest.domain.group.domain.Member
 import team.kin.forest.domain.todo.adapter.output.persistence.enums.TodoType
 import team.kin.forest.domain.todo.application.port.input.WritePrivateTodoUseCase
+import team.kin.forest.domain.todo.application.port.input.dto.CreateTodoDto
 import team.kin.forest.domain.todo.application.port.output.CommandPrivateTodoPort
 import team.kin.forest.domain.todo.application.port.output.CommandTodoPort
 import team.kin.forest.domain.todo.domain.PrivateTodo
@@ -25,7 +26,7 @@ class WritePrivateTodoService(
     private val commandPrivateTodoPort: CommandPrivateTodoPort,
 ) : WritePrivateTodoUseCase {
 
-    override fun execute(groupId: UUID, content: String) {
+    override fun execute(groupId: UUID, dto: CreateTodoDto) {
         val user = queryUserPort.findCurrentUser()
             ?: throw UserNotFoundException()
         val group = queryGroupPort.findByIdOrNull(groupId)
@@ -40,8 +41,9 @@ class WritePrivateTodoService(
 
         val todo = Todo(
             id = UUID.randomUUID(),
-            content = content,
+            content = dto.content,
             todoType = TodoType.PRIVATE,
+            todoStatus = false,
             group = group
         )
         val saveTodo = commandTodoPort.saveTodo(todo)

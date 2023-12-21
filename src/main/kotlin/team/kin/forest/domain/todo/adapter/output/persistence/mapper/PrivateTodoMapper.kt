@@ -27,4 +27,13 @@ class PrivateTodoMapper(
             user = userMapper.toDomain(entity.user)
         )
 
+    fun toDomain(list: List<PrivateTodoJpaEntity>): List<PrivateTodo> =
+        list.map {
+            PrivateTodo(
+                id = it.id,
+                todoStatus = it.todoStatus,
+                user = userMapper.toDomain(it.user),
+                todo = todoMapper.toDomain(it.todo)
+            )
+        }
 }
