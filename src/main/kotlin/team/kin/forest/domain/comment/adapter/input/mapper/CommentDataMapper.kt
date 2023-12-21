@@ -1,8 +1,10 @@
-package team.kin.forest.domain.post.adapter.input.mapper
+package team.kin.forest.domain.comment.adapter.input.mapper
 
 import org.springframework.stereotype.Component
+import team.kin.forest.domain.comment.adapter.input.data.request.CreateCommentRequest
+import team.kin.forest.domain.comment.application.port.input.dto.CreateCommentDto
 import team.kin.forest.domain.post.application.port.output.dto.CommentDto
-import team.kin.forest.domain.post.adapter.input.data.QueryPostDetailsResponse.QueryCommentsResponse as QueryCommentsResponse
+import team.kin.forest.domain.post.adapter.input.data.response.QueryPostDetailsResponse.QueryCommentsResponse as QueryCommentsResponse
 
 @Component
 class CommentDataMapper {
@@ -17,5 +19,10 @@ class CommentDataMapper {
             isModified = dto.isModified,
             name = dto.name,
             profileUrl = dto.profileUrl
+        )
+
+    infix fun toDto(request: CreateCommentRequest) =
+        CreateCommentDto(
+            content = request.content
         )
 }

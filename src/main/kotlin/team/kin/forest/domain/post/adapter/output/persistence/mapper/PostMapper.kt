@@ -26,4 +26,14 @@ class PostMapper(
         entities.map {
             toDomain(it)
         }
+
+    fun toEntity(domain: Post) =
+        PostJpaEntity(
+            id = domain.id,
+            title = domain.title,
+            content = domain.content,
+            postTag = domain.tag,
+            group = groupMapper.toEntity(domain.group),
+            user = userMapper.toEntity(domain.user)
+        )
 }

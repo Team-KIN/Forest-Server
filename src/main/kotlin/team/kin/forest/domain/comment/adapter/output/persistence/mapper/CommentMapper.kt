@@ -23,4 +23,12 @@ class CommentMapper(
             post = postMapper.toDomain(entity.post),
             user = userMapper.toDomain(entity.user)
         )
+
+    fun toEntity(domain: Comment) =
+        CommentJpaEntity(
+            id = domain.id,
+            content = domain.content,
+            post = postMapper.toEntity(domain.post),
+            user = userMapper.toEntity(domain.user)
+        )
 }
