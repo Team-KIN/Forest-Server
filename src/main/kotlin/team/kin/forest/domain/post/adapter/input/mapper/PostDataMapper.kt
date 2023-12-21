@@ -1,8 +1,10 @@
 package team.kin.forest.domain.post.adapter.input.mapper
 
 import org.springframework.stereotype.Component
+import team.kin.forest.domain.post.adapter.input.data.request.CreatePostRequest
 import team.kin.forest.domain.post.adapter.input.data.response.QueryPostDetailsResponse
 import team.kin.forest.domain.post.adapter.input.data.response.QueryPostsResponse
+import team.kin.forest.domain.post.application.port.output.dto.CreatePostDto
 import team.kin.forest.domain.post.application.port.output.dto.PostDetailsDto
 import team.kin.forest.domain.post.application.port.output.dto.PostsDto
 import team.kin.forest.domain.post.adapter.input.data.response.QueryPostsResponse.QueryPostResponse as QueryPostResponse
@@ -33,5 +35,12 @@ class PostDataMapper(
             name = dto.name,
             profileUrl = dto.profileUrl,
             comments = commentDataMapper toResponse dto.comments
+        )
+
+    infix fun toDto(request: CreatePostRequest) =
+        CreatePostDto(
+            title = request.title,
+            content = request.content,
+            tag = request.tag,
         )
 }
