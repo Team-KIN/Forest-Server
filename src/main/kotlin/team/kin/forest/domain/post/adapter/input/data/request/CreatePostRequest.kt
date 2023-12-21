@@ -12,7 +12,7 @@ data class CreatePostRequest (
     @field:NotBlank(message = "제목은 필수 값입니다.")
     val title: String,
     @field:Length(
-        max = 30,
+        max = 300,
         message = "내용은 300자를 초과할 수 없습니다."
     )
     @field:NotBlank(message = "내용은 필수 값입니다.")
