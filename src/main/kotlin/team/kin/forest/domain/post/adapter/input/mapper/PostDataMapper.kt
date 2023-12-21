@@ -1,6 +1,7 @@
 package team.kin.forest.domain.post.adapter.input.mapper
 
 import org.springframework.stereotype.Component
+import team.kin.forest.domain.comment.adapter.input.mapper.CommentDataMapper
 import team.kin.forest.domain.post.adapter.input.data.request.CreatePostRequest
 import team.kin.forest.domain.post.adapter.input.data.response.QueryPostDetailsResponse
 import team.kin.forest.domain.post.adapter.input.data.response.QueryPostsResponse

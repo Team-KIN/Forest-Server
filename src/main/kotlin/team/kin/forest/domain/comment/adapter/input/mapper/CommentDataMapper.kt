@@ -1,4 +1,4 @@
-package team.kin.forest.domain.post.adapter.input.mapper
+package team.kin.forest.domain.comment.adapter.input.mapper
 
 import org.springframework.stereotype.Component
 import team.kin.forest.domain.post.application.port.output.dto.CommentDto
