@@ -4,5 +4,5 @@ import team.kin.forest.domain.comment.application.port.input.dto.ModifyCommentDt
 import java.util.*
 
 interface ModifyCommentUseCase {
-    fun execute(id: UUID, groupId: UUID, PostId: UUID, modifyCommentDto: ModifyCommentDto)
+    fun execute(id: UUID, groupId: UUID, postId: UUID, modifyCommentDto: ModifyCommentDto)
 }
