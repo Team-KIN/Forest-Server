@@ -26,6 +26,7 @@ enum class ErrorCode(
     POST_NOT_FOUND("게시글을 찾을 수 없습니다.", 404),
 
     // Comment
+    FORBIDDEN_COMMENT("댓글에 대한 권한이 없습니다.",403),
     COMMENT_NOT_FOUND("댓글을 찾을 수 없습니다.", 404),
 
     // TOKEN
