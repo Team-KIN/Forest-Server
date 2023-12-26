@@ -45,6 +45,7 @@ class SecurityConfig(
             .mvcMatchers(HttpMethod.GET, "/group/{id}/post/{post_id}").authenticated()
 
             .mvcMatchers(HttpMethod.POST, "/group/{id}/post/{post_id}/comment").authenticated()
+            .mvcMatchers(HttpMethod.POST, "/group/{id}/post/{post_id}/comment/{comment_id}").authenticated()
 
             .mvcMatchers(HttpMethod.POST, "/group/{id}/public-todo").authenticated()
             .mvcMatchers(HttpMethod.POST, "/group/{id}/private-todo").authenticated()
