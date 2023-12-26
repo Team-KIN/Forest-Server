@@ -7,7 +7,7 @@ import team.kin.forest.domain.post.adapter.input.data.request.ModifyPostRequest
 import team.kin.forest.domain.post.adapter.input.data.response.QueryPostDetailsResponse
 import team.kin.forest.domain.post.adapter.input.data.response.QueryPostsResponse
 import team.kin.forest.domain.post.application.port.input.dto.ModifyPostDto
-import team.kin.forest.domain.post.application.port.output.dto.CreatePostDto
+import team.kin.forest.domain.post.application.port.input.dto.CreatePostDto
 import team.kin.forest.domain.post.application.port.output.dto.PostDetailsDto
 import team.kin.forest.domain.post.application.port.output.dto.PostsDto
 import team.kin.forest.domain.post.adapter.input.data.response.QueryPostsResponse.QueryPostResponse as QueryPostResponse

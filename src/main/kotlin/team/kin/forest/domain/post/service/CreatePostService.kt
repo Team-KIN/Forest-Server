@@ -5,7 +5,7 @@ import team.kin.forest.domain.group.application.exception.GroupNotFoundException
 import team.kin.forest.domain.group.application.port.output.QueryGroupPort
 import team.kin.forest.domain.post.application.port.input.CreatePostUseCase
 import team.kin.forest.domain.post.application.port.output.CommendPostPort
-import team.kin.forest.domain.post.application.port.output.dto.CreatePostDto
+import team.kin.forest.domain.post.application.port.input.dto.CreatePostDto
 import team.kin.forest.domain.post.domain.Post
 import team.kin.forest.domain.user.application.exception.UserNotFoundException
 import team.kin.forest.domain.user.application.port.output.QueryUserPort

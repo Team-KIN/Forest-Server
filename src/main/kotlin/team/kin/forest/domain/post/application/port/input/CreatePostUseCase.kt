@@ -1,6 +1,6 @@
 package team.kin.forest.domain.post.application.port.input
 
-import team.kin.forest.domain.post.application.port.output.dto.CreatePostDto
+import team.kin.forest.domain.post.application.port.input.dto.CreatePostDto
 import java.util.*
 
 interface CreatePostUseCase {
