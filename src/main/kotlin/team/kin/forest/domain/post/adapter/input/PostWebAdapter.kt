@@ -58,5 +58,5 @@ class PostWebAdapter(
         @RequestBody @Valid modifyPostRequest: ModifyPostRequest
     ): ResponseEntity<Void> =
         modifyPostUseCase.execute(id, groupId, postDataMapper toDto modifyPostRequest)
-            .let { ResponseEntity.status(HttpStatus.CREATED).build() }
+            .let { ResponseEntity.noContent().build() }
 }
