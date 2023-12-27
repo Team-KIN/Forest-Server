@@ -5,4 +5,5 @@ import java.util.UUID
 
 interface QueryCommentPort {
     fun findAllByPostId(postId: UUID): List<Comment>
+    fun findByIdOrNull(id: UUID): Comment?
 }
