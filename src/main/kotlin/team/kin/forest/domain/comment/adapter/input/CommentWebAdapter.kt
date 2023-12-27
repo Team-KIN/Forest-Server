@@ -40,5 +40,5 @@ class CommentWebAdapter(
         @RequestBody @Valid modifyCommentRequest: ModifyCommentRequest
     ): ResponseEntity<Void> =
         modifyCommentUseCase.execute(id, groupId, postId, commentDataMapper toDto  modifyCommentRequest)
-            .let { ResponseEntity.status(HttpStatus.CREATED).build() }
+            .let { ResponseEntity.noContent().build() }
 }
