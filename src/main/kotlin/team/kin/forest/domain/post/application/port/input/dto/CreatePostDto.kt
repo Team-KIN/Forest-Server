@@ -1,4 +1,4 @@
-package team.kin.forest.domain.post.application.port.output.dto
+package team.kin.forest.domain.post.application.port.input.dto
 
 import team.kin.forest.domain.post.adapter.output.persistence.enums.PostTag
 

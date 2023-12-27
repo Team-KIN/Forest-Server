@@ -23,6 +23,7 @@ enum class ErrorCode(
     NOT_GROUP_MANAGER("그룹 매니저가 아닙니다.", 403),
 
     // Post
+    FORBIDDEN_POST("게시글에 대한 권한이 없습니다.", 403),
     POST_NOT_FOUND("게시글을 찾을 수 없습니다.", 404),
 
     // TOKEN
