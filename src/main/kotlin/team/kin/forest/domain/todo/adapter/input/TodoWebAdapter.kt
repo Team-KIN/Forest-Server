@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import team.kin.forest.common.annotation.MemberOnly
 import team.kin.forest.domain.todo.adapter.input.data.request.CreateTodoRequest
 import team.kin.forest.domain.todo.adapter.input.data.response.TodoListResponse
 import team.kin.forest.domain.todo.adapter.input.mapper.TodoDataMapper
+import team.kin.forest.domain.todo.application.port.input.CompleteTodoUseCase
 import team.kin.forest.domain.todo.application.port.input.QueryTodoListUseCase
 import team.kin.forest.domain.todo.application.port.input.WritePrivateTodoUseCase
 import team.kin.forest.domain.todo.application.port.input.WritePublicTodoUseCase
@@ -22,6 +24,7 @@ class TodoWebAdapter(
     private val writePrivateTodoUseCase: WritePrivateTodoUseCase,
     private val writePublicTodoUseCase: WritePublicTodoUseCase,
     private val queryTodoListUseCase: QueryTodoListUseCase,
+    private val completeTodoUseCase: CompleteTodoUseCase,
     private val todoDataMapper: TodoDataMapper
 ) {
 
@@ -40,5 +43,11 @@ class TodoWebAdapter(
         queryTodoListUseCase.execute(id)
             .let { todoDataMapper toResponse it }
             .let { ResponseEntity.ok(it) }
+
+    @MemberOnly
+    @PostMapping("/{id}/todo/{todo_id}")
+    fun completeTodo(@PathVariable("id") groupId: UUID, @PathVariable("todo_id") todoId: UUID): ResponseEntity<Void> =
+        completeTodoUseCase.execute(groupId, todoId)
+            .let { ResponseEntity.status(HttpStatus.NO_CONTENT).build() }
 
 }
