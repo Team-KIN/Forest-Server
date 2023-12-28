@@ -14,4 +14,6 @@ interface TodoRepository : CrudRepository<TodoJpaEntity, UUID> {
     fun countByGroupId(groupId: UUID): Int
 
     fun findAllByGroupAndTodoType(group: GroupJpaEntity, todoType: TodoType): List<TodoJpaEntity>
+
+    fun findByIdAndTodoType(id: UUID, todoType: TodoType): TodoJpaEntity?
 }
