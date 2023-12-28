@@ -1,5 +1,6 @@
 package team.kin.forest.domain.todo.adapter.output.persistence
 
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
 import team.kin.forest.domain.group.adapter.output.persistence.mapper.GroupMapper
 import team.kin.forest.domain.group.domain.Group
@@ -24,5 +25,10 @@ class QueryTodoPersistenceAdapter(
         val groupEntity = groupMapper.toEntity(group)
         todoRepository.findAllByGroupAndTodoType(groupEntity, todoType)
             .let { return todoMapper.toDomain(it) }
+    }
+
+    override fun findByIdAndTodoType(id: UUID, todoType: TodoType): Todo? {
+        val todoEntity = todoRepository.findByIdAndTodoType(id, todoType)
+        return todoEntity?.let { todoMapper.toDomain(it) }
     }
 }

@@ -8,4 +8,5 @@ import java.util.*
 interface QueryTodoPort {
     fun countByGroupId(groupId: UUID): Int
     fun findAllByGroupAndTodoType(group: Group, todoType: TodoType): List<Todo>
+    fun findByIdAndTodoType(id: UUID, todoType: TodoType): Todo?
 }
