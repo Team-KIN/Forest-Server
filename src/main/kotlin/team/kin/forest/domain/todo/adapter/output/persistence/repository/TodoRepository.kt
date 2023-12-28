@@ -3,10 +3,8 @@ package team.kin.forest.domain.todo.adapter.output.persistence.repository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 import team.kin.forest.domain.group.adapter.output.persistence.entity.GroupJpaEntity
-import team.kin.forest.domain.group.domain.Group
 import team.kin.forest.domain.todo.adapter.output.persistence.entity.TodoJpaEntity
 import team.kin.forest.domain.todo.adapter.output.persistence.enums.TodoType
-import team.kin.forest.domain.todo.domain.Todo
 import java.util.*
 
 interface TodoRepository : CrudRepository<TodoJpaEntity, UUID> {
