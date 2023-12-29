@@ -9,10 +9,9 @@ import team.kin.forest.domain.group.domain.Member
 import team.kin.forest.domain.todo.adapter.output.persistence.enums.TodoType
 import team.kin.forest.domain.todo.application.port.input.QueryTodoListUseCase
 import team.kin.forest.domain.todo.application.port.input.dto.TodoListDto
-import team.kin.forest.domain.todo.application.port.output.QueryCompletePort
+import team.kin.forest.domain.todo.application.port.output.QueryCompleteTodoPort
 import team.kin.forest.domain.todo.application.port.output.QueryPrivateTodoPort
 import team.kin.forest.domain.todo.application.port.output.QueryTodoPort
-import team.kin.forest.domain.todo.domain.Todo
 import team.kin.forest.domain.user.application.exception.UserNotFoundException
 import team.kin.forest.domain.user.application.port.output.QueryUserPort
 import java.util.*
@@ -24,7 +23,7 @@ class QueryTodoListService(
     private val queryMemberPort: QueryMemberPort,
     private val queryTodoPort: QueryTodoPort,
     private val queryPrivateTodoPort: QueryPrivateTodoPort,
-    private val queryCompletePort: QueryCompletePort,
+    private val queryCompleteTodoPort: QueryCompleteTodoPort,
 ) : QueryTodoListUseCase {
 
     override fun execute(groupId: UUID): TodoListDto {
@@ -50,8 +49,8 @@ class QueryTodoListService(
                 TodoListDto.PublicTodo(
                     id = it.id,
                     content = it.content,
-                    achievementRate = ((queryCompletePort.countByUserAndTodo(user, it).toDouble() / totalMember.toDouble()) * 100).toInt(),
-                    todoStatus = false
+                    achievementRate = ((queryCompleteTodoPort.countByUserAndTodo(user, it).toDouble() / totalMember.toDouble()) * 100).toInt(),
+                    todoStatus = it.todoStatus
                 )
             },
             privateTodos = privateTodo.map {

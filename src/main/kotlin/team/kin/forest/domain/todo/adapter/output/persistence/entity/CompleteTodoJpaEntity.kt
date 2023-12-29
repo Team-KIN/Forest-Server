@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 
 @Entity
-class CompleteJpaEntity (
+class CompleteTodoJpaEntity (
     override val id: Long,
 
     @ManyToOne(fetch = FetchType.LAZY)

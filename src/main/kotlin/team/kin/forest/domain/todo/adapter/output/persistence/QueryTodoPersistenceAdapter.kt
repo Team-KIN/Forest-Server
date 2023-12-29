@@ -25,4 +25,9 @@ class QueryTodoPersistenceAdapter(
         todoRepository.findAllByGroupAndTodoType(groupEntity, todoType)
             .let { return todoMapper.toDomain(it) }
     }
+
+    override fun findByIdAndTodoType(id: UUID, todoType: TodoType): Todo? {
+        val todoEntity = todoRepository.findByIdAndTodoType(id, todoType)
+        return todoEntity?.let { todoMapper.toDomain(it) }
+    }
 }
