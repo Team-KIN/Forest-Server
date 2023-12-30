@@ -31,4 +31,10 @@ class QueryPrivateTodoPersistenceAdapter(
             .let { return privateTodoMapper.toDomain(it) }
     }
 
+    override fun existsByTodoAndUser(todo: Todo, user: User): Boolean {
+        val todoEntity = todoMapper.toEntity(todo)
+        val userEntity = userMapper.toEntity(user)
+        return privateTodoRepository.existsByTodoAndUser(todoEntity, userEntity)
+    }
+
 }
