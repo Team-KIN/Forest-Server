@@ -46,6 +46,7 @@ enum class ErrorCode(
 
     // TODO
     TODO_NOT_FOUND("투두를 찾을 수 없습니다.", 404),
-    ALREADY_COMPLETE_TODO("이미 완료된 투두 입니다.", 409)
+    ALREADY_COMPLETE_TODO("이미 완료된 투두 입니다.", 409),
+    NOT_TODO_OWNER("투두의 주인이 아닙니다.", 403)
 
 }
