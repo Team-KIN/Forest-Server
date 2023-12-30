@@ -9,5 +9,6 @@ interface PrivateTodoRepository : CrudRepository<PrivateTodoJpaEntity, Long> {
 
     fun findAllByUser(user: UserJpaEntity): List<PrivateTodoJpaEntity>
     fun findByTodo(todo: TodoJpaEntity): PrivateTodoJpaEntity
+    fun existsByTodoAndUser(todo: TodoJpaEntity, user: UserJpaEntity): Boolean
 
 }

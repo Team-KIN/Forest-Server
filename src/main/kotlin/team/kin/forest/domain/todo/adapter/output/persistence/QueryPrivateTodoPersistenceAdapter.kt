@@ -1,7 +1,6 @@
 package team.kin.forest.domain.todo.adapter.output.persistence
 
 import org.springframework.stereotype.Component
-import team.kin.forest.domain.group.domain.Group
 import team.kin.forest.domain.todo.adapter.output.persistence.mapper.PrivateTodoMapper
 import team.kin.forest.domain.todo.adapter.output.persistence.mapper.TodoMapper
 import team.kin.forest.domain.todo.adapter.output.persistence.repository.PrivateTodoRepository
@@ -29,6 +28,12 @@ class QueryPrivateTodoPersistenceAdapter(
         val todoEntity = todoMapper.toEntity(todo)
         privateTodoRepository.findByTodo(todoEntity)
             .let { return privateTodoMapper.toDomain(it) }
+    }
+
+    override fun existsByTodoAndUser(todo: Todo, user: User): Boolean {
+        val todoEntity = todoMapper.toEntity(todo)
+        val userEntity = userMapper.toEntity(user)
+        return privateTodoRepository.existsByTodoAndUser(todoEntity, userEntity)
     }
 
 }

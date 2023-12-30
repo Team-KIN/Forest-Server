@@ -8,5 +8,6 @@ interface QueryPrivateTodoPort {
 
     fun findAllByUser(user: User): List<PrivateTodo>
     fun findByTodo(todo: Todo): PrivateTodo
+    fun existsByTodoAndUser(todo: Todo, user: User): Boolean
 
 }
