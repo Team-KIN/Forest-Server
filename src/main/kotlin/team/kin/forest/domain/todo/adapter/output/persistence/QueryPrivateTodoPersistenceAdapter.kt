@@ -1,7 +1,6 @@
 package team.kin.forest.domain.todo.adapter.output.persistence
 
 import org.springframework.stereotype.Component
-import team.kin.forest.domain.group.domain.Group
 import team.kin.forest.domain.todo.adapter.output.persistence.mapper.PrivateTodoMapper
 import team.kin.forest.domain.todo.adapter.output.persistence.mapper.TodoMapper
 import team.kin.forest.domain.todo.adapter.output.persistence.repository.PrivateTodoRepository
