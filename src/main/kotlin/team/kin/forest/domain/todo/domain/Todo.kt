@@ -8,8 +8,15 @@ import java.util.UUID
 @RootAggregate
 data class Todo(
     val id: UUID,
-    val content: String,
+    var content: String,
     var todoStatus: Boolean,
     val todoType: TodoType,
     val group: Group
-)
+) {
+
+    fun updateContent(newContent: String): Todo {
+        this.content = newContent
+        return this
+    }
+
+}
