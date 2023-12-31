@@ -2,6 +2,7 @@ package team.kin.forest.domain.todo.adapter.input
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -26,6 +27,7 @@ class TodoWebAdapter(
     private val completeTodoUseCase: CompleteTodoUseCase,
     private val completePrivateTodoUseCase: CompletePrivateTodoUseCase,
     private val modifyTodoUseCase: ModifyTodoUseCase,
+    private val deleteTodoUseCase: DeleteTodoUseCase,
     private val todoDataMapper: TodoDataMapper
 ) {
 
@@ -66,6 +68,11 @@ class TodoWebAdapter(
         todoDataMapper.toDto(request)
             .let { modifyTodoUseCase.execute(groupId, todoId, it) }
             .run { ResponseEntity.status(HttpStatus.NO_CONTENT).build() }
+
+    @DeleteMapping("/{id}/todo/{todo_id}")
+    fun deleteTodo(@PathVariable("id") groupId: UUID, @PathVariable("todo_id") todoId: UUID): ResponseEntity<Void> =
+        deleteTodoUseCase.execute(groupId, todoId)
+            .run { ResponseEntity.status(HttpStatus.RESET_CONTENT).build() }
 
 
 }
