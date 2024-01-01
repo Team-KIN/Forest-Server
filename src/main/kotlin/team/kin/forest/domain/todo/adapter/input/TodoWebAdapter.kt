@@ -28,6 +28,7 @@ class TodoWebAdapter(
     private val completePrivateTodoUseCase: CompletePrivateTodoUseCase,
     private val modifyTodoUseCase: ModifyTodoUseCase,
     private val deleteTodoUseCase: DeleteTodoUseCase,
+    private val deletePrivateTodoUseCase: DeletePrivateTodoUseCase,
     private val todoDataMapper: TodoDataMapper
 ) {
 
@@ -74,5 +75,9 @@ class TodoWebAdapter(
         deleteTodoUseCase.execute(groupId, todoId)
             .run { ResponseEntity.status(HttpStatus.RESET_CONTENT).build() }
 
+    @DeleteMapping("/{id}/private-todo/{todo_id}")
+    fun deletePrivateTodo(@PathVariable("id") groupId: UUID, @PathVariable("todo_id") todoId: UUID): ResponseEntity<Void> =
+        deletePrivateTodoUseCase.execute(groupId, todoId)
+            .run { ResponseEntity.status(HttpStatus.RESET_CONTENT).build() }
 
 }
