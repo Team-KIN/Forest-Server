@@ -17,4 +17,9 @@ class CommandPrivateTodoPersistenceAdapter(
         privateTodoRepository.save(privateTodoEntity)
     }
 
+    override fun deletePrivateTodo(privateTodo: PrivateTodo) {
+        val privateTodoEntity = privateTodoMapper.toEntity(privateTodo)
+        privateTodoRepository.delete(privateTodoEntity)
+    }
+
 }

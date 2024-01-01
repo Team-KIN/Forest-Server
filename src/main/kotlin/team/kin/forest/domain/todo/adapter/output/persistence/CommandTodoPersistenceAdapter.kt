@@ -18,4 +18,9 @@ class CommandTodoPersistenceAdapter(
             .let { todoMapper.toDomain(it) }
     }
 
+    override fun deleteTodo(todo: Todo) {
+        val todoEntity = todoMapper.toEntity(todo)
+        todoRepository.delete(todoEntity)
+    }
+
 }
