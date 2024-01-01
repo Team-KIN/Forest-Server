@@ -5,5 +5,6 @@ import team.kin.forest.domain.todo.domain.PrivateTodo
 interface CommandPrivateTodoPort {
 
     fun savePrivateTodo(privateTodo: PrivateTodo)
+    fun deletePrivateTodo(privateTodo: PrivateTodo)
 
 }
