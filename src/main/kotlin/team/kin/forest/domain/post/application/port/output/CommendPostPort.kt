@@ -5,4 +5,5 @@ import java.util.*
 
 interface CommendPostPort {
     fun savePost(post: Post): UUID
+    fun deletePost(post: Post)
 }
