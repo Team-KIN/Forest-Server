@@ -16,4 +16,9 @@ class CommendPostPersistenceAdapter(
         val postEntity = postMapper.toEntity(post)
         return postRepository.save(postEntity).id
     }
+
+    override fun deletePost(post: Post) {
+        val postEntity = postMapper.toEntity(post)
+        return postRepository.delete(postEntity)
+    }
 }
