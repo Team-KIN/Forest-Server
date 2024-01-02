@@ -5,11 +5,13 @@ import team.kin.forest.domain.group.adapter.input.data.request.CreateGroupReques
 import team.kin.forest.domain.group.adapter.input.data.request.GroupCodeRequest
 import team.kin.forest.domain.group.adapter.input.data.response.GroupCodeResponse
 import team.kin.forest.domain.group.adapter.input.data.response.QueryGroupDetailsResponse
+import team.kin.forest.domain.group.adapter.input.data.response.QueryPublicGroupDetailsResponse
 import team.kin.forest.domain.group.adapter.input.data.response.QueryGroupsResponse
 import team.kin.forest.domain.group.application.port.input.dto.CreateGroupDto
+import team.kin.forest.domain.group.application.port.input.dto.QueryGroupDetailsDto
 import team.kin.forest.domain.group.application.port.input.dto.GroupCodeDto as InputGroupCodeDto
 import team.kin.forest.domain.group.application.port.output.dto.GroupCodeDto as OutputGroupCodeDto
-import team.kin.forest.domain.group.application.port.output.dto.GroupDetailsDto
+import team.kin.forest.domain.group.application.port.output.dto.PublicGroupDetailsDto
 import team.kin.forest.domain.group.application.port.output.dto.GroupsDto
 import team.kin.forest.domain.group.adapter.input.data.response.QueryGroupsResponse.QueryGroupResponse as QueryGroupResponse
 
@@ -28,8 +30,8 @@ class GroupDataMapper {
             }
         )
 
-    infix fun toResponse(dto: GroupDetailsDto) =
-        QueryGroupDetailsResponse(
+    infix fun toResponse(dto: PublicGroupDetailsDto) =
+        QueryPublicGroupDetailsResponse(
             name = dto.name,
             content = dto.content,
             purpose = dto.purpose,
@@ -54,4 +56,17 @@ class GroupDataMapper {
             code = request.code
         )
 
+    infix fun toResponse(dto: QueryGroupDetailsDto) =
+            QueryGroupDetailsResponse(
+                content = dto.content,
+                purpose = dto.purpose,
+                code = dto.code,
+                users = dto.users.map {
+                    QueryGroupDetailsResponse.MemberListResponse(
+                        id = it.id,
+                        name = it.name,
+                        profileUrl = it.profileUrl
+                    )
+                }
+            )
 }

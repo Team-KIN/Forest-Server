@@ -23,4 +23,13 @@ class MemberMapper(
             user = userMapper.toDomain(entity.user),
             group = groupMapper.toDomain(entity.group)
         )
+
+    fun toDomain(entities: List<MemberJpaEntity>): List<Member> =
+        entities.map {
+            Member(
+                id = it.id,
+                user = userMapper.toDomain(it.user),
+                group = groupMapper.toDomain(it.group)
+            )
+        }
 }

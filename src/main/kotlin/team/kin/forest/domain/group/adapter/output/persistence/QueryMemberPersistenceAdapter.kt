@@ -2,6 +2,7 @@ package team.kin.forest.domain.group.adapter.output.persistence
 
 import org.springframework.stereotype.Component
 import team.kin.forest.domain.group.adapter.output.persistence.mapper.GroupMapper
+import team.kin.forest.domain.group.adapter.output.persistence.mapper.MemberMapper
 import team.kin.forest.domain.group.adapter.output.persistence.repository.MemberRepository
 import team.kin.forest.domain.group.application.port.output.QueryMemberPort
 import team.kin.forest.domain.group.domain.Group
@@ -13,7 +14,8 @@ import java.util.UUID
 class QueryMemberPersistenceAdapter(
     private val memberRepository: MemberRepository,
     private val groupMapper: GroupMapper,
-    private val userMapper: UserMapper
+    private val userMapper: UserMapper,
+    private val memberMapper: MemberMapper
 ) : QueryMemberPort {
     override fun countByGroupId(groupId: UUID): Int {
         return memberRepository.countByGroupId(groupId)
@@ -31,6 +33,12 @@ class QueryMemberPersistenceAdapter(
         val groupEntity = groupMapper.toEntity(member.group)
 
         return memberRepository.existsByUserAndGroup(userEntity, groupEntity)
+    }
+
+    override fun findAllByGroup(group: Group): List<Member> {
+        val groupEntity = groupMapper.toEntity(group)
+        val memberList = memberRepository.findAllByGroup(groupEntity)
+        return memberMapper.toDomain(memberList)
     }
 
 }

@@ -1,15 +1,15 @@
-package team.kin.forest.domain.group.adapter.input.data.response
+package team.kin.forest.domain.group.application.port.input.dto
 
 import java.util.UUID
 
-data class QueryGroupDetailsResponse(
+data class QueryGroupDetailsDto(
     val content: String,
     val purpose: String,
     val code: String,
-    val users: List<MemberListResponse>
+    val users: List<MemberList>
 ) {
 
-    data class MemberListResponse(
+    data class MemberList(
         val id: UUID,
         val name: String,
         val profileUrl: String

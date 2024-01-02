@@ -57,6 +57,8 @@ class SecurityConfig(
             .mvcMatchers(HttpMethod.DELETE, "/group/{id}/todo/{todo_id}").authenticated()
             .mvcMatchers(HttpMethod.DELETE, "/group/{id}/private-todo/{todo_id}").authenticated()
 
+            .mvcMatchers(HttpMethod.GET, "/group/{id}/setting").authenticated()
+
             .mvcMatchers(HttpMethod.GET, "/main").authenticated()
 
             .mvcMatchers(HttpMethod.GET, "/user").authenticated()
