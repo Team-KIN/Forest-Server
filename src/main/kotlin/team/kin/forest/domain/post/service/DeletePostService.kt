@@ -5,8 +5,7 @@ import team.kin.forest.domain.group.application.exception.GroupNotFoundException
 import team.kin.forest.domain.group.application.port.output.QueryGroupPort
 import team.kin.forest.domain.post.application.exception.ForbiddenPostException
 import team.kin.forest.domain.post.application.exception.PostNotFoundException
-import team.kin.forest.domain.post.application.port.input.ModifyPostUseCase
-import team.kin.forest.domain.post.application.port.input.dto.ModifyPostDto
+import team.kin.forest.domain.post.application.port.input.DeletePostUseCase
 import team.kin.forest.domain.post.application.port.output.CommendPostPort
 import team.kin.forest.domain.post.application.port.output.QueryPostPort
 import team.kin.forest.domain.user.application.exception.UserNotFoundException
@@ -19,8 +18,8 @@ class DeletePostService(
     private val commendPostPort: CommendPostPort,
     private val queryGroupPort: QueryGroupPort,
     private val queryUserPort: QueryUserPort
-) : ModifyPostUseCase {
-    override fun execute(id: UUID, groupId: UUID, modifyPostDto: ModifyPostDto) {
+) : DeletePostUseCase {
+    override fun execute(id: UUID, groupId: UUID) {
         val group = queryGroupPort.findByIdOrNull(groupId)
             ?: throw GroupNotFoundException()
 
