@@ -9,4 +9,5 @@ interface QueryMemberPort {
     fun countByGroupId(groupId: UUID): Int
     fun findGroupByUserId(userId: UUID): List<Group>
     fun existsMember(member: Member): Boolean
+    fun findAllByGroup(group: Group): List<Member>
 }
