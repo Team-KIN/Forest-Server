@@ -2,6 +2,7 @@ package team.kin.forest.domain.post.adapter.input
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -15,10 +16,7 @@ import team.kin.forest.domain.post.adapter.input.data.request.ModifyPostRequest
 import team.kin.forest.domain.post.adapter.input.data.response.QueryPostDetailsResponse
 import team.kin.forest.domain.post.adapter.input.data.response.QueryPostsResponse
 import team.kin.forest.domain.post.adapter.input.mapper.PostDataMapper
-import team.kin.forest.domain.post.application.port.input.CreatePostUseCase
-import team.kin.forest.domain.post.application.port.input.ModifyPostUseCase
-import team.kin.forest.domain.post.application.port.input.QueryPostDetailsUseCase
-import team.kin.forest.domain.post.application.port.input.QueryPostsUseCase
+import team.kin.forest.domain.post.application.port.input.*
 import java.util.UUID
 import javax.validation.Valid
 
@@ -29,6 +27,7 @@ class PostWebAdapter(
     private val queryPostDetailsUseCase: QueryPostDetailsUseCase,
     private val createPostUseCase: CreatePostUseCase,
     private val modifyPostUseCase: ModifyPostUseCase,
+    private val deletePostUseCase: DeletePostUseCase,
     private val postDataMapper: PostDataMapper
 ) {
     @GetMapping
@@ -58,5 +57,11 @@ class PostWebAdapter(
         @RequestBody @Valid modifyPostRequest: ModifyPostRequest
     ): ResponseEntity<Void> =
         modifyPostUseCase.execute(id, groupId, postDataMapper toDto modifyPostRequest)
+            .let { ResponseEntity.noContent().build() }
+
+    @DeleteMapping("/{post_id}")
+    @MemberOnly
+    fun deletePost(@PathVariable("post_id") id: UUID, @PathVariable("id") groupId: UUID): ResponseEntity<Void> =
+        deletePostUseCase.execute(id, groupId)
             .let { ResponseEntity.noContent().build() }
 }
