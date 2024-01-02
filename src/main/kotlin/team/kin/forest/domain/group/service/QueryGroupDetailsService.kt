@@ -1,34 +1,46 @@
 package team.kin.forest.domain.group.service
 
-import team.kin.forest.common.annotation.ServiceWithReadOnlyTransaction
-import team.kin.forest.domain.group.adapter.output.persistence.enums.GroupScope
+import team.kin.forest.common.annotation.ServiceWithTransaction
 import team.kin.forest.domain.group.application.exception.GroupNotFoundException
-import team.kin.forest.domain.group.application.exception.PrivateGroupException
+import team.kin.forest.domain.group.application.exception.NotGroupManagerException
 import team.kin.forest.domain.group.application.port.input.QueryGroupDetailsUseCase
+import team.kin.forest.domain.group.application.port.input.dto.QueryGroupDetailsDto
 import team.kin.forest.domain.group.application.port.output.QueryGroupPort
 import team.kin.forest.domain.group.application.port.output.QueryMemberPort
-import team.kin.forest.domain.group.application.port.output.dto.GroupDetailsDto
+import team.kin.forest.domain.user.application.exception.UserNotFoundException
+import team.kin.forest.domain.user.application.port.output.QueryUserPort
 import java.util.*
 
-@ServiceWithReadOnlyTransaction
+@ServiceWithTransaction
 class QueryGroupDetailsService(
-    private val groupPort: QueryGroupPort,
-    private val memberPort: QueryMemberPort
+    private val queryUserPort: QueryUserPort,
+    private val queryGroupPort: QueryGroupPort,
+    private val queryMemberPort: QueryMemberPort
 ) : QueryGroupDetailsUseCase {
-    override fun execute(id: UUID): GroupDetailsDto {
-        val group = groupPort.findByIdOrNull(id)
+
+    override fun execute(id: UUID): QueryGroupDetailsDto {
+        val user = queryUserPort.findCurrentUser()
+            ?: throw UserNotFoundException()
+
+        val group = queryGroupPort.findByIdOrNull(id)
             ?: throw GroupNotFoundException()
 
-        if(group.groupScope == GroupScope.PRIVATE)
-            throw PrivateGroupException()
+        if (group.manager != user) throw NotGroupManagerException()
 
-        val headcount = memberPort.countByGroupId(group.id)
+        val memberList = queryMemberPort.findAllByGroup(group)
 
-        return GroupDetailsDto(
-            name = group.name,
-            content= group.content,
+        return QueryGroupDetailsDto(
+            content = group.content,
             purpose = group.purpose,
-            headcount = headcount
+            code = group.code,
+            users = memberList.map {
+                QueryGroupDetailsDto.MemberList(
+                    id = it.user.id,
+                    name = it.user.name,
+                    profileUrl = it.user.profileUrl
+                )
+            }
         )
     }
+
 }
