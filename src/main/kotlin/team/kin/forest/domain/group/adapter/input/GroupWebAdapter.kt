@@ -3,6 +3,7 @@ package team.kin.forest.domain.group.adapter.input
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import team.kin.forest.common.annotation.MemberOnly
 import team.kin.forest.domain.group.adapter.input.data.request.CreateGroupRequest
 import team.kin.forest.domain.group.adapter.input.data.request.GroupCodeRequest
 import team.kin.forest.domain.group.adapter.input.data.response.GroupCodeResponse
@@ -54,6 +55,7 @@ class GroupWebAdapter(
             .let { groupDataMapper toResponse it }
             .let { ResponseEntity.ok(it) }
 
+    @MemberOnly
     @GetMapping("/{id}/setting")
     fun queryGroupDetails(@PathVariable id: UUID): ResponseEntity<QueryGroupDetailsResponse> =
         queryGroupDetailsUseCase.execute(id)
