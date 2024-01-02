@@ -16,4 +16,9 @@ class CommendCommentPersistenceAdapter(
         val commentEntity = commentMapper.toEntity(comment)
         return commentRepository.save(commentEntity).id
     }
+
+    override fun deleteComment(comment: Comment) {
+        val commentEntity = commentMapper.toEntity(comment)
+        commentRepository.delete(commentEntity)
+    }
 }

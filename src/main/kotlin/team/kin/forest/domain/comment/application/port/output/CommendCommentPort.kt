@@ -5,4 +5,5 @@ import java.util.*
 
 interface CommendCommentPort {
     fun saveComment(comment: Comment): UUID
+    fun deleteComment(comment: Comment)
 }
