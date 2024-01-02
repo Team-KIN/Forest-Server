@@ -1,5 +1,6 @@
 package team.kin.forest.domain.group.service
 
+import team.kin.forest.common.annotation.ServiceWithReadOnlyTransaction
 import team.kin.forest.common.annotation.ServiceWithTransaction
 import team.kin.forest.domain.group.application.exception.GroupNotFoundException
 import team.kin.forest.domain.group.application.exception.NotGroupManagerException
@@ -11,7 +12,7 @@ import team.kin.forest.domain.user.application.exception.UserNotFoundException
 import team.kin.forest.domain.user.application.port.output.QueryUserPort
 import java.util.*
 
-@ServiceWithTransaction
+@ServiceWithReadOnlyTransaction
 class QueryGroupDetailsService(
     private val queryUserPort: QueryUserPort,
     private val queryGroupPort: QueryGroupPort,
