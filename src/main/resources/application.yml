@@ -10,6 +10,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
 
   datasource:
     url: jdbc:mysql://${MYSQL_URL}/${MYSQL_NAME}?&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
