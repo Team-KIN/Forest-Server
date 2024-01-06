@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
 import team.kin.forest.domain.user.application.port.output.TokenParsePort
 import team.kin.forest.global.security.handler.CustomAccessDeniedHandler
@@ -24,6 +25,9 @@ class SecurityConfig(
             .csrf().disable()
             .formLogin().disable()
             .httpBasic().disable()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
             .apply(FilterConfig(jwtParserAdapter))
         authorizeHttpRequests(http)
         exceptionHandling(http)
@@ -59,7 +63,6 @@ class SecurityConfig(
             .mvcMatchers(HttpMethod.DELETE, "/group/{id}/private-todo/{todo_id}").authenticated()
 
             .mvcMatchers(HttpMethod.GET, "/group/{id}/setting").authenticated()
-
             .mvcMatchers(HttpMethod.GET, "/main").authenticated()
 
             .mvcMatchers(HttpMethod.GET, "/user").authenticated()
