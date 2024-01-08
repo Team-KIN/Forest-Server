@@ -17,4 +17,6 @@ interface MemberRepository  : CrudRepository<MemberJpaEntity, Long> {
     fun existsByUserAndGroup(user: UserJpaEntity, group: GroupJpaEntity): Boolean
 
     fun findAllByGroup(group: GroupJpaEntity): List<MemberJpaEntity>
+
+    fun findByGroupAndUser(group: GroupJpaEntity, user: UserJpaEntity): MemberJpaEntity
 }

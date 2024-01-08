@@ -8,6 +8,7 @@ import team.kin.forest.domain.group.application.port.output.QueryMemberPort
 import team.kin.forest.domain.group.domain.Group
 import team.kin.forest.domain.group.domain.Member
 import team.kin.forest.domain.user.adapter.output.persistence.mapper.UserMapper
+import team.kin.forest.domain.user.domain.User
 import java.util.UUID
 
 @Component
@@ -39,6 +40,13 @@ class QueryMemberPersistenceAdapter(
         val groupEntity = groupMapper.toEntity(group)
         val memberList = memberRepository.findAllByGroup(groupEntity)
         return memberMapper.toDomain(memberList)
+    }
+
+    override fun findByGroupAndUser(group: Group, user: User): Member {
+        val groupEntity = groupMapper.toEntity(group)
+        val userEntity = userMapper.toEntity(user)
+        val memberEntity = memberRepository.findByGroupAndUser(groupEntity, userEntity)
+        return memberMapper.toDomain(memberEntity)
     }
 
 }
