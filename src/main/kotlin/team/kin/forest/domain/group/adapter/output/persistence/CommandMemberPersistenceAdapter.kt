@@ -15,4 +15,9 @@ class CommandMemberPersistenceAdapter(
         val memberEntity = memberMapper.toEntity(member)
         memberRepository.save(memberEntity)
     }
+
+    override fun deleteMember(member: Member) {
+        val memberEntity = memberMapper.toEntity(member)
+        memberRepository.delete(memberEntity)
+    }
 }

@@ -2,6 +2,7 @@ package team.kin.forest.domain.group.application.port.output
 
 import team.kin.forest.domain.group.domain.Group
 import team.kin.forest.domain.group.domain.Member
+import team.kin.forest.domain.user.domain.User
 import java.util.UUID
 
 
@@ -10,4 +11,5 @@ interface QueryMemberPort {
     fun findGroupByUserId(userId: UUID): List<Group>
     fun existsMember(member: Member): Boolean
     fun findAllByGroup(group: Group): List<Member>
+    fun findByGroupAndUser(group: Group, user: User): Member
 }

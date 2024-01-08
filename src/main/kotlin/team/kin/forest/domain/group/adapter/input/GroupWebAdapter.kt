@@ -24,6 +24,7 @@ class GroupWebAdapter(
     private val joinGroupUseCase: JoinGroupUseCase,
     private val joinGroupByCodeUseCase: JoinGroupByCodeUseCase,
     private val queryGroupDetailsUseCase: QueryGroupDetailsUseCase,
+    private val deleteGroupMemberUseCase: DeleteGroupMemberUseCase,
     private val groupDataMapper: GroupDataMapper,
 ) {
 
@@ -57,8 +58,14 @@ class GroupWebAdapter(
 
     @MemberOnly
     @GetMapping("/{id}/setting")
-    fun queryGroupDetails(@PathVariable id: UUID): ResponseEntity<QueryGroupDetailsResponse> =
-        queryGroupDetailsUseCase.execute(id)
+    fun queryGroupDetails(@PathVariable("id") groupId: UUID): ResponseEntity<QueryGroupDetailsResponse> =
+        queryGroupDetailsUseCase.execute(groupId)
             .let { groupDataMapper toResponse it }
             .let { ResponseEntity.ok(it) }
+
+    @MemberOnly
+    @DeleteMapping("/{id}/setting/{user_id}")
+    fun deleteGroupMember(@PathVariable("id") groupId: UUID, @PathVariable("user_id") userId: UUID): ResponseEntity<Void> =
+        deleteGroupMemberUseCase.execute(groupId, userId)
+            .run { ResponseEntity.status(HttpStatus.RESET_CONTENT).build() }
 }

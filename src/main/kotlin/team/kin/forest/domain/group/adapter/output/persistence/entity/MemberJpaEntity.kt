@@ -2,12 +2,15 @@ package team.kin.forest.domain.group.adapter.output.persistence.entity
 
 import team.kin.forest.common.entity.BaseIdEntity
 import team.kin.forest.domain.user.adapter.output.persistence.entity.UserJpaEntity
+import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
+import javax.persistence.Table
 
 @Entity
+@Table(name = "member")
 class MemberJpaEntity (
     override val id: Long,
 

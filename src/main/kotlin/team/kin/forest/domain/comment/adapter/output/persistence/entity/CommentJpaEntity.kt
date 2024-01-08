@@ -9,6 +9,7 @@ import java.util.UUID
 import javax.persistence.*
 
 @Entity
+@Table(name = "comment")
 class CommentJpaEntity (
     override val id: UUID,
 
