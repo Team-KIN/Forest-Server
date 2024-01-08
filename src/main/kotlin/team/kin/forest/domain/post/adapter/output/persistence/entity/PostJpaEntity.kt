@@ -10,6 +10,7 @@ import java.util.UUID
 import javax.persistence.*
 
 @Entity
+@Table(name = "post")
 class PostJpaEntity (
     override val id: UUID,
 

@@ -7,6 +7,7 @@ import java.util.UUID
 import javax.persistence.*
 
 @Entity
+@Table(name = "group_entity")
 class GroupJpaEntity (
     override val id: UUID,
 
