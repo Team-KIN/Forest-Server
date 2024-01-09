@@ -3,11 +3,13 @@ package team.kin.forest.domain.group.adapter.input.mapper
 import org.springframework.stereotype.Component
 import team.kin.forest.domain.group.adapter.input.data.request.CreateGroupRequest
 import team.kin.forest.domain.group.adapter.input.data.request.GroupCodeRequest
+import team.kin.forest.domain.group.adapter.input.data.request.ModifyGroupDetailsRequest
 import team.kin.forest.domain.group.adapter.input.data.response.GroupCodeResponse
 import team.kin.forest.domain.group.adapter.input.data.response.QueryGroupDetailsResponse
 import team.kin.forest.domain.group.adapter.input.data.response.QueryPublicGroupDetailsResponse
 import team.kin.forest.domain.group.adapter.input.data.response.QueryGroupsResponse
 import team.kin.forest.domain.group.application.port.input.dto.CreateGroupDto
+import team.kin.forest.domain.group.application.port.input.dto.ModifyGroupDetailsDto
 import team.kin.forest.domain.group.application.port.input.dto.QueryGroupDetailsDto
 import team.kin.forest.domain.group.application.port.input.dto.GroupCodeDto as InputGroupCodeDto
 import team.kin.forest.domain.group.application.port.output.dto.GroupCodeDto as OutputGroupCodeDto
@@ -69,4 +71,10 @@ class GroupDataMapper {
                     )
                 }
             )
+
+    infix fun toDto(request: ModifyGroupDetailsRequest) =
+        ModifyGroupDetailsDto(
+            content = request.content,
+            purpose = request.purpose
+        )
 }
