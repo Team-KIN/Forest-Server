@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*
 import team.kin.forest.common.annotation.MemberOnly
 import team.kin.forest.domain.group.adapter.input.data.request.CreateGroupRequest
 import team.kin.forest.domain.group.adapter.input.data.request.GroupCodeRequest
+import team.kin.forest.domain.group.adapter.input.data.request.ModifyGroupDetailsRequest
 import team.kin.forest.domain.group.adapter.input.data.response.GroupCodeResponse
 import team.kin.forest.domain.group.adapter.input.data.response.QueryGroupDetailsResponse
 import team.kin.forest.domain.group.adapter.input.data.response.QueryPublicGroupDetailsResponse
@@ -25,6 +26,7 @@ class GroupWebAdapter(
     private val joinGroupByCodeUseCase: JoinGroupByCodeUseCase,
     private val queryGroupDetailsUseCase: QueryGroupDetailsUseCase,
     private val deleteGroupMemberUseCase: DeleteGroupMemberUseCase,
+    private val modifyGroupDetailsUseCase: ModifyGroupDetailsUseCase,
     private val groupDataMapper: GroupDataMapper,
 ) {
 
@@ -67,5 +69,11 @@ class GroupWebAdapter(
     @DeleteMapping("/{id}/setting/{user_id}")
     fun deleteGroupMember(@PathVariable("id") groupId: UUID, @PathVariable("user_id") userId: UUID): ResponseEntity<Void> =
         deleteGroupMemberUseCase.execute(groupId, userId)
+            .run { ResponseEntity.status(HttpStatus.RESET_CONTENT).build() }
+
+    @MemberOnly
+    @PatchMapping("{id}/setting")
+    fun modifyGroupDetails(@PathVariable("id") groupId: UUID, @RequestBody request: ModifyGroupDetailsRequest): ResponseEntity<Void> =
+        modifyGroupDetailsUseCase.execute(groupId, groupDataMapper toDto request)
             .run { ResponseEntity.status(HttpStatus.RESET_CONTENT).build() }
 }
