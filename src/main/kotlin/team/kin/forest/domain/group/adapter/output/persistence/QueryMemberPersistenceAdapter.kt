@@ -62,4 +62,10 @@ class QueryMemberPersistenceAdapter(
         return memberEntity.memberScope
     }
 
+    override fun existsByUserAndGroup(user: User, group: Group): Boolean {
+        val userEntity = userMapper.toEntity(user)
+        val groupEntity = groupMapper.toEntity(group)
+        return memberRepository.existsByUserAndGroup(userEntity, groupEntity)
+    }
+
 }
