@@ -2,6 +2,7 @@ package team.kin.forest.domain.group.service
 
 import org.apache.commons.lang3.RandomStringUtils
 import team.kin.forest.common.annotation.ServiceWithTransaction
+import team.kin.forest.domain.group.adapter.output.persistence.enums.MemberScope
 import team.kin.forest.domain.group.application.port.input.CreateGroupUseCase
 import team.kin.forest.domain.group.application.port.input.dto.CreateGroupDto
 import team.kin.forest.domain.group.application.port.output.CommandGroupPort
@@ -38,6 +39,7 @@ class CreateGroupService (
         val persistGroup = commandGroupPort.saveGroup(group)
 
         val member = Member(
+            memberScope = MemberScope.MANAGER,
             group = persistGroup,
             user = user
         )
