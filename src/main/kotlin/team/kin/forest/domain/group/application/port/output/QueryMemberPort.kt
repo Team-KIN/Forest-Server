@@ -1,5 +1,6 @@
 package team.kin.forest.domain.group.application.port.output
 
+import team.kin.forest.domain.group.adapter.output.persistence.enums.MemberScope
 import team.kin.forest.domain.group.domain.Group
 import team.kin.forest.domain.group.domain.Member
 import team.kin.forest.domain.user.domain.User
@@ -12,4 +13,5 @@ interface QueryMemberPort {
     fun existsMember(member: Member): Boolean
     fun findAllByGroup(group: Group): List<Member>
     fun findByGroupAndUser(group: Group, user: User): Member
+    fun findMemberScopeByGroupAndUser(group: Group, user: User): MemberScope
 }

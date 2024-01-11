@@ -1,6 +1,7 @@
 package team.kin.forest.domain.group.adapter.output.persistence
 
 import org.springframework.stereotype.Component
+import team.kin.forest.domain.group.adapter.output.persistence.enums.MemberScope
 import team.kin.forest.domain.group.adapter.output.persistence.mapper.GroupMapper
 import team.kin.forest.domain.group.adapter.output.persistence.mapper.MemberMapper
 import team.kin.forest.domain.group.adapter.output.persistence.repository.MemberRepository
@@ -47,6 +48,13 @@ class QueryMemberPersistenceAdapter(
         val userEntity = userMapper.toEntity(user)
         val memberEntity = memberRepository.findByGroupAndUser(groupEntity, userEntity)
         return memberMapper.toDomain(memberEntity)
+    }
+
+    override fun findMemberScopeByGroupAndUser(group: Group, user: User): MemberScope {
+        val groupEntity = groupMapper.toEntity(group)
+        val userEntity = userMapper.toEntity(user)
+        val memberEntity = memberRepository.findByGroupAndUser(groupEntity, userEntity)
+        return memberEntity.memberScope
     }
 
 }
