@@ -4,4 +4,5 @@ import team.kin.forest.domain.group.domain.Group
 
 interface CommandGroupPort {
     fun saveGroup(group: Group): Group
+    fun deleteGroup(group: Group)
 }

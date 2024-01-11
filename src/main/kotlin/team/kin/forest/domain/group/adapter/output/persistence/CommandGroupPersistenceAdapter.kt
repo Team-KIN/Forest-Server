@@ -16,4 +16,9 @@ class CommandGroupPersistenceAdapter(
         return groupRepository.save(groupEntity)
             .let { groupMapper.toDomain(it) }
     }
+
+    override fun deleteGroup(group: Group) {
+        val groupEntity = groupMapper.toEntity(group)
+        groupRepository.delete(groupEntity)
+    }
 }
