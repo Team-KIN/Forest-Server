@@ -27,6 +27,7 @@ class GroupWebAdapter(
     private val queryGroupDetailsUseCase: QueryGroupDetailsUseCase,
     private val deleteGroupMemberUseCase: DeleteGroupMemberUseCase,
     private val modifyGroupDetailsUseCase: ModifyGroupDetailsUseCase,
+    private val deleteGroupUseCase: DeleteGroupUseCase,
     private val groupDataMapper: GroupDataMapper,
 ) {
 
@@ -75,5 +76,10 @@ class GroupWebAdapter(
     @PatchMapping("{id}/setting")
     fun modifyGroupDetails(@PathVariable("id") groupId: UUID, @RequestBody request: ModifyGroupDetailsRequest): ResponseEntity<Void> =
         modifyGroupDetailsUseCase.execute(groupId, groupDataMapper toDto request)
+            .run { ResponseEntity.status(HttpStatus.RESET_CONTENT).build() }
+
+    @DeleteMapping("{id}/setting/expurgation")
+    fun deleteGroup(@PathVariable("id") groupId: UUID): ResponseEntity<Void> =
+        deleteGroupUseCase.execute(groupId)
             .run { ResponseEntity.status(HttpStatus.RESET_CONTENT).build() }
 }

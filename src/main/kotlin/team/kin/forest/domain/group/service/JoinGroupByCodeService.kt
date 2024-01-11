@@ -1,6 +1,7 @@
 package team.kin.forest.domain.group.service
 
 import team.kin.forest.common.annotation.ServiceWithTransaction
+import team.kin.forest.domain.group.adapter.output.persistence.enums.MemberScope
 import team.kin.forest.domain.group.application.exception.AlreadyJoinGroupException
 import team.kin.forest.domain.group.application.exception.GroupNotFoundException
 import team.kin.forest.domain.group.application.port.input.JoinGroupByCodeUseCase
@@ -27,6 +28,7 @@ class JoinGroupByCodeService(
             ?: throw GroupNotFoundException()
 
         val member = Member(
+            memberScope = MemberScope.MEMBER,
             user = user,
             group = group
         )

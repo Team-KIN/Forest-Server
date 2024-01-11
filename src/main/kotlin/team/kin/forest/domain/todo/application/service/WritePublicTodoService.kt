@@ -29,12 +29,8 @@ class WritePublicTodoService(
             ?: throw UserNotFoundException()
         val group = queryGroupPort.findByIdOrNull(groupId)
             ?: throw GroupNotFoundException()
-        val member = Member(
-            user = user,
-            group = group
-        )
 
-        if (!queryMemberPort.existsMember(member)) {
+        if (!queryMemberPort.existsByUserAndGroup(user, group)){
             throw MemberNotFoundException()
         }
         if (group.manager != user) {

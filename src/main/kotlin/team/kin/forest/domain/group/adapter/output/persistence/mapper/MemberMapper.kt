@@ -13,6 +13,7 @@ class MemberMapper(
     fun toEntity(dto: Member) =
         MemberJpaEntity(
             id = dto.id,
+            memberScope = dto.memberScope,
             group = groupMapper.toEntity(dto.group),
             user = userMapper.toEntity(dto.user)
         )
@@ -20,6 +21,7 @@ class MemberMapper(
     fun toDomain(entity: MemberJpaEntity): Member =
         Member(
             id = entity.id,
+            memberScope = entity.memberScope,
             user = userMapper.toDomain(entity.user),
             group = groupMapper.toDomain(entity.group)
         )
@@ -28,6 +30,7 @@ class MemberMapper(
         entities.map {
             Member(
                 id = it.id,
+                memberScope = it.memberScope,
                 user = userMapper.toDomain(it.user),
                 group = groupMapper.toDomain(it.group)
             )

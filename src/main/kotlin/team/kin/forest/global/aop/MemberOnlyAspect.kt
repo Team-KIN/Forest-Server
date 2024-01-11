@@ -41,13 +41,7 @@ class MemberOnlyAspect(
                 val group = queryGroupPort.findByIdOrNull(groupId)
                     ?: throw GroupNotFoundException()
 
-                val member = Member(
-                    user = user,
-                    group = group
-                )
-
-                if (!queryMemberPort.existsMember(member))
-                    throw NotGroupMemberException()
+                if (!queryMemberPort.existsByUserAndGroup(user, group)) throw NotGroupMemberException()
 
                 return joinPoint.proceed()
             }

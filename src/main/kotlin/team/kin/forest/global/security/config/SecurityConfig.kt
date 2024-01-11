@@ -65,6 +65,7 @@ class SecurityConfig(
             .mvcMatchers(HttpMethod.GET, "/group/{id}/setting").authenticated()
             .mvcMatchers(HttpMethod.PATCH, "/group/{id}/setting").authenticated()
             .mvcMatchers(HttpMethod.DELETE, "/group/{id}/setting/{user_id}").authenticated()
+            .mvcMatchers(HttpMethod.DELETE, "/group/{id}/setting/expurgation").authenticated()
 
             .mvcMatchers(HttpMethod.GET, "/main").authenticated()
 
