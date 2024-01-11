@@ -21,6 +21,7 @@ enum class ErrorCode(
     ALREADY_JOIN_GROUP("이미 가입되어 있는 그룹입니다.", 409),
     MEMBER_NOT_FOUND("존재하지 않는 멤버 입니다.", 404),
     NOT_GROUP_MANAGER("그룹 매니저가 아닙니다.", 403),
+    EXIST_GROUP_MEMBER("그룹 멤버가 남아있습니다.", 409),
 
     // Post
     FORBIDDEN_POST("게시글에 대한 권한이 없습니다.", 403),
