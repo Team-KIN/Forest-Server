@@ -31,16 +31,8 @@ class QueryTodoListService(
             ?: throw UserNotFoundException()
         val group = queryGroupPort.findByIdOrNull(groupId)
             ?: throw GroupNotFoundException()
-        val memberScope = queryMemberPort.findMemberScopeByGroupAndUser(group, user)
-        val member = Member(
-            memberScope = memberScope,
-            user = user,
-            group = group
-        )
 
-        if (!queryMemberPort.existsMember(member)) {
-            throw MemberNotFoundException()
-        }
+        if (!queryMemberPort.existsByUserAndGroup(user, group)) throw MemberNotFoundException()
 
         val todo = queryTodoPort.findAllByGroupAndTodoType(group, TodoType.PUBLIC)
         val privateTodo = queryPrivateTodoPort.findAllByUser(user)
