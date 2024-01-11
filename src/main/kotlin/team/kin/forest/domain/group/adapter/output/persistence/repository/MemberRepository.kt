@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 import team.kin.forest.domain.group.adapter.output.persistence.entity.GroupJpaEntity
 import team.kin.forest.domain.group.adapter.output.persistence.entity.MemberJpaEntity
+import team.kin.forest.domain.group.adapter.output.persistence.enums.MemberScope
 import team.kin.forest.domain.user.adapter.output.persistence.entity.UserJpaEntity
 import java.util.UUID
 
@@ -19,4 +20,6 @@ interface MemberRepository  : CrudRepository<MemberJpaEntity, Long> {
     fun findAllByGroup(group: GroupJpaEntity): List<MemberJpaEntity>
 
     fun findByGroupAndUser(group: GroupJpaEntity, user: UserJpaEntity): MemberJpaEntity
+
+    fun existsAllByGroupAndMemberScope(group: GroupJpaEntity, memberScope: MemberScope): Boolean
 }

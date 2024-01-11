@@ -50,6 +50,11 @@ class QueryMemberPersistenceAdapter(
         return memberMapper.toDomain(memberEntity)
     }
 
+    override fun existsAllByGroupAndMemberScope(group: Group, memberScope: MemberScope): Boolean {
+        val groupEntity = groupMapper.toEntity(group)
+        return memberRepository.existsAllByGroupAndMemberScope(groupEntity, memberScope)
+    }
+
     override fun findMemberScopeByGroupAndUser(group: Group, user: User): MemberScope {
         val groupEntity = groupMapper.toEntity(group)
         val userEntity = userMapper.toEntity(user)
