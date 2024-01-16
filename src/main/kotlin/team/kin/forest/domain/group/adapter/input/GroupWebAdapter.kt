@@ -87,5 +87,5 @@ class GroupWebAdapter(
     @DeleteMapping("{id}/setting/withdraw")
     fun groupWithdraw(@PathVariable("id") groupId: UUID): ResponseEntity<Void> =
         groupWithdrawPort.execute(groupId)
-            .run { ResponseEntity.status(HttpStatus.NO_CONTENT).build() }
+            .run { ResponseEntity.status(HttpStatus.RESET_CONTENT).build() }
 }
