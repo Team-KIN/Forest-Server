@@ -12,7 +12,7 @@ interface QueryMemberPort {
     fun findGroupByUserId(userId: UUID): List<Group>
     fun existsMember(member: Member): Boolean
     fun findAllByGroup(group: Group): List<Member>
-    fun findByGroupAndUser(group: Group, user: User): Member
+    fun findByGroupAndUser(group: Group, user: User): Member?
     fun existsAllByGroupAndMemberScope(group: Group, memberScope: MemberScope): Boolean
     fun existsByUserAndGroup(user: User, group: Group): Boolean
 }

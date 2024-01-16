@@ -28,6 +28,7 @@ class GroupWebAdapter(
     private val deleteGroupMemberUseCase: DeleteGroupMemberUseCase,
     private val modifyGroupDetailsUseCase: ModifyGroupDetailsUseCase,
     private val deleteGroupUseCase: DeleteGroupUseCase,
+    private val groupWithdrawPort: GroupWithdrawPort,
     private val groupDataMapper: GroupDataMapper,
 ) {
 
@@ -81,5 +82,10 @@ class GroupWebAdapter(
     @DeleteMapping("{id}/setting/expurgation")
     fun deleteGroup(@PathVariable("id") groupId: UUID): ResponseEntity<Void> =
         deleteGroupUseCase.execute(groupId)
+            .run { ResponseEntity.status(HttpStatus.RESET_CONTENT).build() }
+
+    @DeleteMapping("{id}/setting/withdraw")
+    fun groupWithdraw(@PathVariable("id") groupId: UUID): ResponseEntity<Void> =
+        groupWithdrawPort.execute(groupId)
             .run { ResponseEntity.status(HttpStatus.RESET_CONTENT).build() }
 }
