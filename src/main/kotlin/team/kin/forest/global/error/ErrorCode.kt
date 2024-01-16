@@ -22,6 +22,7 @@ enum class ErrorCode(
     MEMBER_NOT_FOUND("존재하지 않는 멤버 입니다.", 404),
     NOT_GROUP_MANAGER("그룹 매니저가 아닙니다.", 403),
     EXIST_GROUP_MEMBER("그룹 멤버가 남아있습니다.", 409),
+    NOT_WITHDRAW_GROUP_MANAGER("그룹 매니저는 탈퇴할 수 없습니다.", 403),
 
     // Post
     FORBIDDEN_POST("게시글에 대한 권한이 없습니다.", 403),
