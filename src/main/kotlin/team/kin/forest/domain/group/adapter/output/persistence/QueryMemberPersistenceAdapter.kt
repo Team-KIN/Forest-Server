@@ -43,7 +43,7 @@ class QueryMemberPersistenceAdapter(
         return memberMapper.toDomain(memberList)
     }
 
-    override fun findByGroupAndUser(group: Group, user: User): Member {
+    override fun findByGroupAndUser(group: Group, user: User): Member? {
         val groupEntity = groupMapper.toEntity(group)
         val userEntity = userMapper.toEntity(user)
         val memberEntity = memberRepository.findByGroupAndUser(groupEntity, userEntity)

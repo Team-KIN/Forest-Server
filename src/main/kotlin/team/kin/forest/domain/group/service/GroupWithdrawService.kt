@@ -28,8 +28,7 @@ class GroupWithdrawService(
             ?: throw GroupNotFoundException()
 
         val member = queryMemberPort.findByGroupAndUser(group, user)
-
-        if (!queryMemberPort.existsByUserAndGroup(user, group)) throw MemberNotFoundException()
+            ?: throw MemberNotFoundException()
 
         if (group.manager == user) throw NotWithdrawGroupManagerException()
 

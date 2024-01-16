@@ -31,8 +31,7 @@ class DeleteGroupMemberService(
             ?: throw UserNotFoundException()
 
         val deleteMember = queryMemberPort.findByGroupAndUser(group, member)
-
-        if (!queryMemberPort.existsMember(deleteMember)) throw MemberNotFoundException()
+            ?: throw MemberNotFoundException()
 
         if (group.manager != user) throw NotGroupManagerException()
 
